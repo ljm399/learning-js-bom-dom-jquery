@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1.获取原生的事件对象
+      var divEL = document.querySelector('ul');
+      divEL.addEventListener('click', function(event) {
+        console.log(evnet)
+      })
+
+      // 2.获取jQuery的事件对象
+      $('ul').click(function(event) {
+        console.log(event)
+      })
+
+    })
+  </script>
+</body>
+</html>
+</html>

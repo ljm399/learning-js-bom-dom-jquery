@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+    }
+    /* 为什么span不设display:block也可设宽高,因为flex-item不严格区分这些
+     */
+    span{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span></span>
+  </div>
+
+  <script>
+    var boxEl = document.querySelector('.box')
+    var spanEl = boxEl.querySelector('span')
+    var bodyEl = document.body
+
+    //绑定点击事件,无法监听与设为捕获过程
+    // boxEl.onclick = function() {
+    //   console.log('box发生了点击')
+    // }
+    // spanEl.onclick = function() {
+    //   console.log('span发生了点击')
+    // }
+    // bodyEl.onclick = function() {
+    //   console.log('body发生了点击')
+    // }
+
+    //设置希望监听事件捕获的过程(与上面的区别),这时冒泡过程
+    boxEl.addEventListener('click', function() {
+      console.log('box发生了点击')
+    })
+    spanEl.addEventListener('click', function() {
+      console.log('span发生了点击')
+    })
+    bodyEl.addEventListener('click', function() {
+      console.log('body发生了点击')
+    })
+
+    //捕获过程
+    boxEl.addEventListener('click', function() {
+      console.log('box发生了点击')
+    },true)
+    spanEl.addEventListener('click', function() {
+      console.log('span发生了点击')
+    },true)
+    bodyEl.addEventListener('click', function() {
+      console.log('body发生了点击')
+    },true)
+  </script>
+</body>
+</html>

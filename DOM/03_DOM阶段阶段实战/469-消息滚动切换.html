@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .box{ */
+      /* vertical-align: top;是设在子元素里面
+    } */
+    img{
+      width: 50px;
+      height: 50px;
+      border-radius: 26px;
+      vertical-align: top;
+
+    }
+    span{
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="./img/微信图片_20240319235602.jpg" alt="">
+    <span>小虎为什么而死</span>
+  </div>
+
+  <script>
+    //1,公司里给点数据
+    let list = [
+      {
+        img: './img/微信图片_20240319235602.jpg',
+        title: '小虎为什么而死'
+      },
+      {
+        img: './img/微信图片_20240319235607.jpg',
+        title: 'sy导致'
+      },
+      {
+        img: './img/微信图片_20240319235612.jpg',
+        title: '自由意志'
+      }
+    ]
+
+    //轮播图:启发先把你的框架写下来,一次只做一件事,如clg('打印'),具体具体再思考,同时也方便查询网络
+    var imgEl = document.querySelector('img')
+    var spanEl = document.querySelector('span')
+    var index = 0
+
+    // setInterval(function() {
+    //   index = ++index % list.length
+    //   imgEl.src = list[index].img
+    //   spanEl.textContent = list[index].title
+    // },2000)
+
+    //不用++index
+    // setInterval(function() {
+      
+    //   imgEl.src = list[index].img
+    //   spanEl.textContent = list[index].title
+    //   index++
+    //   if(index === 3){
+    //     index = 0
+    //   }
+      
+    // },2000)
+
+    //用random
+    setInterval(function() {
+      index = Math.floor(Math.random() * 3)
+      imgEl.src = list[index].img
+      spanEl.textContent = list[index].title
+    },2000)
+  </script>
+</body>
+
+</html>

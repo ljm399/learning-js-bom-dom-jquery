@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1,直接在html中监听 -->
+  <button onclick="console.log('点了按钮')">按钮</button>
+
+  <script>
+    var buttonEl = document.querySelector('button')
+
+    //2,在Script中处理
+    //way一,当一个目标(一个button)只处理一个函数(可能有其他区分的情况)
+
+    function button1(){
+      console.log('点了button1一下')
+    }
+    function button2(){
+      console.log('点了button2以下')
+    }
+    // buttonEl.onclick = button1//不要加(),直接指向了,不看你是否点了
+    // buttonEl.onclick = button2//只执行button二,且会覆盖直接在html那个事件
+
+    // 3,弥补2的不足
+    buttonEl.addEventListener('click',button1)
+    buttonEl.addEventListener('click',button2)//全部执行,包括html那个
+
+  </script>
+</body>
+</html>

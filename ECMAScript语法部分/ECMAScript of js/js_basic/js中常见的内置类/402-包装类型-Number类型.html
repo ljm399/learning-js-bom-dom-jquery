@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var num=123
+    var num2='233234'
+    var num1 = new Number('23333')//省略了构造函数这步,Number类存在于window中(window.Number)
+    console.log(typeof num2,typeof(new Number(1234)))//Number,构造函数本来就是objext
+
+    console.log(Number.MAX_VALUE)
+    console.log(Number.MIN_VALUE)
+    //integer:整数
+    console.log(Number.MAX_SAFE_INTEGER)
+    console.log(Number.MIN_SAFE_INTEGER)
+    //对象的方法
+    var num4 = 522
+    // console.log(window.Number === num4 )
+    console.log(num4.toString(),typeof num.toString())
+    console.log(num4.toString(8))
+    console.log(num4.toString(2))
+    console.log(num4.toString(16))
+    //为什么num4可以调用属性
+    /*
+    new Number(num4)
+    大概function Number(num22) {
+      this.nu22:fucntion toString(8){}//num4.toString(8)
+    }
+    var num4 = new Number//typeof(num4)是Object 但构造函数本来就是Object
+    而这步省略了只有 num4 = 522
+    Number.nu22()错//所有num = Number没问题
+    不是Number是num4 = 
+    */
+
+    var pi = 3.141432
+    console.log(pi.toFixed(2))//3.14
+
+    var num33='133'
+    console.log(typeof(Number(num33)))
+
+    //全局方法:你创的类(构造函数)在window全局对象中,window会给你创的带有全局方法or属性
+    console.log(parseFloat(pi))
+    console.log(parseInt(pi))
+    console.log(parseFloat === window.parseFloat)//window中有function parseFloat而window又是全局对象所有东西可以去里面找
+  </script>
+</body>
+</html>

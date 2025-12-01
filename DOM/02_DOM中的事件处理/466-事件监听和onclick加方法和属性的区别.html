@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //事件监听
+    //1,一个事件可以添加多个监听器
+    //2,不会覆盖默认行为或已有的监听器,而oncick会覆盖默认行为和已有的监听器,可能引发问题
+    //3,同时onclick等这种写法(叫内联事件处理器)可能引发作用域问题：在 onclick 属性中定义的函数通常作为全局函数执行()
+        //如:
+        //当你使用addEventListener为一个DOM元素添加事件监听器时，在事件处理函数中，this关键字将引用触发该事件的DOM元素。
+        //button.addEventListener('click', function(event) ..this指向button
+
+        //onclick="handleClick(event),this指向button
+        //但<button onclick="alert(this.id)">Click me</button>,this指向window,因为这里的函数是在全局
+        // 作用域中直接执行的，而不是作为事件处理器通过addEventListener或类似机制添加的
+        
+    //4,内联事件处理器不利于代码组织和复用：onclick 属性将事件处理逻辑与元素定义紧密耦合在一起，这不利于代码的复用和组织,而事件监听可以
+
+
+    //但onclick没被淘汰
+    //1,历史原因： 在早期的JavaScript中，onclick等属性是添加事件监听器的主要方式。这些属性简单易用，对于初学者来说更容易理解
+    //2,兼容性,有可能一些老浏览器不支持addEventListener
+    //3,当你不需要在JavaScript代码中引用该元素或不需要进行复杂的逻辑处理时
+        //即<button onclick="alert(this.id)">Click me</button>,将事件处理器与HTML代码分离
+    //4,第三方库和框架： 有些第三方库和框架可能仍然使用onclick等属性来添加事件监听器
+
+      
+  </script>
+</body>
+</html>

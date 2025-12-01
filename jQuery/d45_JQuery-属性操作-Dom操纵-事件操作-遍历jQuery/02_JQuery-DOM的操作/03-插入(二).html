@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 插入方式和前面不同:这里先创建在插入到目标位置
+      //创建
+      $('<li>').addClass('li-6').text('item6')//必须加<li>,只li会给全部li的文本和class都改了
+      //插入
+      // .appendTo($('ul'))
+      // .prependTo($('ul'))//在前面插入
+      // .insertBefore($('ul'))//在整体前面插入
+      .insertAfter($('ul'))//在整体后面插入
+
+    })
+  </script>
+</body>
+</html>
+</html>

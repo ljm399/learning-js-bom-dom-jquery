@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+        var foo = [
+      {
+        numb : 1,
+        name : '<三体>',
+        time : '2002-2-2',
+        price : '200',
+        buy : 3
+      },
+      {
+        numb : 2,
+        name : '<城南往事>',
+        time : '2003-2-2',
+        price : '201',
+        buy : 4
+      },
+      {
+        numb : 3,
+        name : '<活着>',
+        time : '2004-2-2',
+        price : '203',
+        buy : 3
+      },
+      {
+        numb : 4,
+        name : '<查理世界>',
+        time : '2002-2-2',
+        price : '200',
+        buy : 3
+      }
+
+    ]
+
+      var tableEl = document.querySelector('table')
+      
+   
+      var itemEl = tableEl.children//把其转为dom而非还是元素
+    
+      for(var i3 = 1; i3 < itemEl.length; i3++) {
+        var alltr = itemEl[i3]
+
+        //什么时候可以用[](对象也可以用),与使用Array.form(用Array.form目的是为了用数组的属性)以下两者对比
+
+        // var arraytr = Array.from(alltr)//他是element元素(可能不是dom)即还带则标签不可以转为Array,同时不能用[](无论有无转成功),所有打印[]
+        // console.log(arraytr) 
+
+        // var arraytrchildren = alltr.children
+        // console.log(arraytrchildren[1])        
+      }
+  </script>
+</body>
+</html>

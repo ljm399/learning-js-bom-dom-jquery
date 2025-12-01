@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var xin = 'cao',ming = 'mai'
+    console.log(xin.concat(ming,'junhao'))//caomaijunhao
+    console.log(xin+ming)//way2 caomai
+    console.log(xin.concat(ming).concat('junhao'))//链式调用,caomaijunhao
+
+    var space = '   cao  mai    '
+    console.log(space.trim())//把首尾空格删了
+    console.log(space)
+
+    var message = 'abc-bcd-nba'
+    console.log(message.split('-_'))//['abc-bcd-nba']
+    console.log(message.split('-'))//['abc', 'bcd', 'nba']
+    console.log(message.split('-').join('//'))//abc//bcd//nba
+    console.log(message.join('//'))//会报错,因为TypeError: message.join is not a function,他是split中的方法,要带上split
+  </script>
+</body>
+</html>

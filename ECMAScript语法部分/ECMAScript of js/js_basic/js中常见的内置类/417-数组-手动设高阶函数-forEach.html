@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = ['a','b','c']
+    //forEach方法
+    arr.forEach(function(item){  
+    })
+    // CpforEach版本一,这只能调入制定数组,如arr
+    function CpforEach(fn){
+      for(var i = 0; i<arr.length; i++){//arr这是调入
+        fn(arr,i,arr[i])
+      }
+    }
+    CpforEach(function(item, index, names){
+      console.log(item,index,names)
+    })
+    
+    // CpforEach版本二,可调入任意arr
+    function CpforEach(fn,arr2){
+      for(var i = 0; i<arr2.length; i++){
+        fn(arr2,i,arr2[i])//这几个版本不能同时用否则调用时,优先级抬升会报错
+      }
+    }
+    CpforEach(function(item, index, names){
+      console.log(item,index,names)
+    },['aa','bb','cc'])
+
+    //版本三
+    arr.CpforEach = function CpforEach(fn){
+      for(var i = 0; i<this.length; i++){
+        fn(this,i,this[i])
+      }
+    }
+    arr.CpforEach(function(item, index, names){
+      console.log(item,index,names)//['a', 'b', 'c', CpforEach: ƒ] 2 'c'
+    })
+    console.log(`++++++++++++++++++++++++++`)//上面方法是下面的本质
+    
+    //forEach方法
+    arr.forEach(function(item,index,names){
+      console.log(item,index,names)//['a', 'b', 'c', CpforEach: ƒ]没有2,'c'与上面区别
+    })
+    console.log('+++++++++++++')
+
+    //版本四,任意数组都可以用,而且我是设一次arr.CpforEach = function CpforEach(fn)就行,上面只能用调用一次//但arr要打全即Array且加.prototype(原型)
+    // 想为所有数组添加该方法，应扩展 Array.prototype
+    Array.prototype.CpforEach = function(fn){//这里函数用匿名,不然等号在这毫无作用
+      for(var i = 0; i<this.length; i++){
+        fn(this,i,this[i])
+      }
+    }
+    arr.CpforEach(function(item, index, names){
+      console.log(item,index,names)})
+
+
+
+
+
+
+
+
+    //数组可以以.or[]像对象哪有储存数据吗,可以
+    var arr1 = [1,2,'3']
+    arr1['我是4'] = '我是4的值'
+    arr1.woshi4 = function(){
+      console.log('woshi4')
+    }
+    console.log(arr1)//[1, 2, '3', 我是4: '我是4的值', woshi4: ƒ]
+  </script>
+</body>
+</html>

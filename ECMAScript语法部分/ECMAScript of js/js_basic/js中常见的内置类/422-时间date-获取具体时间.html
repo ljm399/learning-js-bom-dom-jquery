@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var date = new Date()
+    var year = date.getFullYear()//不可以改如(2026)还是2024
+    var month = date.getMonth()+1
+    var day = date.getDate()
+    var Sun = date.getDay()
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
+    console.log(date)
+    console.log(year,month,day,hour,minute,second,Sun)//2024 5 1 14 45 55 6
+
+    console.log(date.setFullYear(2033))//打印出时间戳
+    //自动校准
+    console.log(date.setDate(32))//2003899728599时间戳
+  </script>
+</body>
+</html>

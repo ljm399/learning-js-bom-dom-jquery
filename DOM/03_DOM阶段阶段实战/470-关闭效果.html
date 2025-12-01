@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      width: 200px;
+      height: 200px;
+    }
+
+    .box{
+      /* max-height: 0; */
+      height: 200px;
+      overflow: hidden;
+      /* transition: all 2s ease-out; */
+      position: relative;
+      transition: height 1s ease-out;
+    }
+    .delete{
+      width: 20px;
+      position: absolute;
+      top: 0px;
+      background-color: red;
+      height: 20px;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="./font文件/download/font_4579877_doebr3cvwzq/iconfont.css"> -->
+</head>
+<body>
+  <div class="box">
+    <img src="./img/x.svg" alt="" class="delete">
+    <img src="./img/微信图片_20240319235607.jpg" alt="">
+  </div>
+
+  <script>
+    var imgEl = document.querySelector('img')
+    var iEl = document.querySelector('.delete')
+    var boxEl =document.querySelector('.box')
+
+    iEl.onclick = function() {
+      // boxEl.style.height = 0
+      // iEl.style.top = '-20px'
+      // boxEl.style.transition = 'all 1s ease-out'
+      // setTimeout(function() {
+      //   boxEl.remove()
+      // },1000)
+
+      //替代上面方法
+      boxEl.style.height = 0
+      boxEl.ontransitionend = function() {
+        boxEl.remove()
+      }
+    }
+
+  </script>
+</body>
+</html>

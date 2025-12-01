@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(age, name) {
+      console.log(this)
+    }
+    foo(12,23)//window
+
+    function bar(a, b){
+      console.log(this)
+    }
+    // console.log(bar())//会有undefined
+    bar()//window
+    // console.log(bar)//bar整体
+    var th = function() {
+      console.log(this)
+  }
+    th()//window
+    var obj={
+      ts: function(){
+        console.log(this)
+      }
+    }
+    console.log(obj.ts)//ts函数全部,no this
+    // console.log(obj.ts())//会有undefined,obj
+    obj.ts()//obj
+  </script>
+</body>
+</html>

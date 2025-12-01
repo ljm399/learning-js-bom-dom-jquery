@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border-collapse:collapse
+    }
+    td{
+      border: 1px solid black;
+      padding : 5px 6px ;
+      text-align: center;
+    }
+    tr:first-child td{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+  
+<body>
+  <table>
+    <caption>小小鸟</caption>
+    <tbody>
+      <td>编号</td>
+      <td>书籍名称</td>
+      <td>出版日期</td>
+      <td>价格</td>
+      <td>购买数量</td>
+    </tbody>
+  </table>
+  <h1>$<span></span></h1>
+
+  
+  <script>
+     var foo = [
+      {
+        numb : 1,
+        name : '<三体>',
+        time : '2002-2-2',
+        price : '20',
+        buy : 3
+      },
+      {
+        numb : 2,
+        name : '<城南往事>',
+        time : '2003-2-2',
+        price : '20',
+        buy : 4
+      },
+      {
+        numb : 3,
+        name : '<活着>',
+        time : '2004-2-2',
+        price : '10',
+        buy : 3
+      },
+      {
+        numb : 4,
+        name : '<查理世界>',
+        time : '2002-2-2',
+        price : '10',
+        buy : 3
+      }
+
+    ]
+
+      var tableEl = document.querySelector('table')
+      var tbodyEl = document.querySelector('tbody')
+      for(var fooitem of foo) {
+
+        var trEl = document.createElement('tr')
+        var keys = Object.keys(fooitem)
+        for(var i = 0; i < keys.length; i++) {
+          var tdEl = document.createElement('td')//与tr一样只能在for里面
+          var key = keys[i]
+          var value = fooitem[key]//是fooitem不是keys的
+          if(key === 'price') value = '$' + value
+
+          tdEl.textContent = value
+          trEl.append(tdEl)
+          tableEl.append(trEl)      
+
+        }
+      }
+
+//table的属性,位置tabel>thead,tfoot,tbody>tr>td
+      console.log(tableEl.rows)//tr元素的集合,可以用[]与转换为array,没有tbody站索引为0的位置
+      console.log(tableEl.children)//有tbody站索引为0的位置(与上面区别)
+
+      console.log(tableEl.caption)//得到的是caption元素no集合
+      console.log(tableEl.tBodies)//得到的是tbodies集合
+
+//<thead>,<tfoot>,tbody元素有rows的属性
+        console.log(tbodyEl.rows)//得到的与tableEl.rows一样是个集合
+
+//tr属性
+      var tr = document.querySelector('tr')
+      console.log(tr.cells)//给定tr里面td/th的集合
+
+      // console.log(tr[2].sectionRowIndex)//报错,因为tr是个元素,要转为集合,如tr.cells
+      var jiheOftr = tr.cells 
+      console.log(jiheOftr)
+      console.log(jiheOftr[2])//也不能用sectionRowIndex,这个是给定tr元素no集合的位置索引
+      console.log(tr.sectionRowIndex)//0
+      //tr.sectionRowIndex与tr.rowIndex,后者是可以在封闭thead,tfoot,tbody中的索引,而前者只能是table
+
+      var td = document.querySelector('td')
+//td,th的属性
+      console.log(td.cellIndex)//返回封闭tr中的编号
+ </script>

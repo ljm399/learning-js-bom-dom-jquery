@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    var imgEl = document.querySelector('img')
+    var boxEl = document.querySelector('.box')
+    // 下面内容:
+    // 1,只知道load是在DOMContentLoaded事件之后执行就行了
+    // 2,其他事件去官网学
+    // 比如 risize
+    window.onresize = function() {
+      console.log('窗口大小改变就打印')
+    }
+
+    //注册事件监听 
+    window.addEventListener('DOMContentLoaded', function() {
+      //1,这里可以操作box,box已经加载完毕
+      // boxEl.style.backgroundColor = 'orange'//不行
+      // console.log(imgEl.offsetHeight,imgEl.offsetWidth)
+      console.log('HTML加载完毕')//undefined
+    })
+
+    //2,load,把所有东西都加载完成
+    window.onload = function() {
+      console.log('load加载完毕')//undefined
+      // boxEl.style.backgroundColor = 'orange'//不行
+      // console.log(imgEl.offsetHeight,imgEl.offsetWidth)//都不行
+
+    }
+
+  </script>
+
+  <div class="box" style=" background-color: green;">你好</div>
+  <img src="../../%/其他事件.png" alt="" style="width: 100px;height: 100px;">
+  <!-- src那个不叫html的内容,而是文档的内容,故加载文档不是与html一起 --> 
+</body>
+</html>

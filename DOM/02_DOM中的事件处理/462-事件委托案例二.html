@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    <button data-action="reset">重置</button>
+    <button data-action="delet">删除</button>
+    <button data-action="new">新建</button>
+    <button>other</button>
+  </div>
+
+  <script>
+    var btnEl = document.querySelector('.box')
+    btnEl.onclick = function(event) {
+      //事件委托
+      var btnEl = event.target.dataset.action
+      switch(btnEl) {
+        case 'reset':
+          console.log('i am reset')
+          break
+        case 'delet':
+          console.log('i am delet')
+          break
+        case 'new':
+          console.log('i am new')
+          break
+        default:
+          console.log('i am others')
+      }
+    }
+  </script>
+</body>
+</html>

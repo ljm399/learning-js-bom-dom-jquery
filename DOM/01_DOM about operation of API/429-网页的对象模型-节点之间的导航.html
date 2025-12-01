@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我是注释,且//是Script中才生效的注释 -->
+  我是文本
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+
+  <script>
+    var htmlEl = document.documentElement
+    var bodyEl = document.body
+    var headEl = document.head
+    var docType = document.doctype
+    // console.log(htmlEl)//把html全部都拿到了
+    // console.log(bodyEl)//拿到body全部
+    // console.log(headEl)//head全部
+    console.log(docType)//<!DOCTYPE html>
+
+    //注意
+    console.log(`${docType}`)//[object DocumentType],少用这种方式
+
+    //二
+    //获得节点导航
+    var bodyEl = document.body
+    //1,获得body所有的子节点
+    console.log(bodyEl.childNodes)//NodeList(6) [text, comment, text, ul, text, script],浏览器里面可以展开,这不是列表?
+    // bodyEl.childNodes.find()报错bodyEl.childNodes.find is not a function,他没有列表的特性,不是列表
+
+    console.log(bodyEl.firstChild)//#text,把整个text打出来了
+    console.log(bodyEl.firstChild.nextSibling)//注释内容(与上面区别)
+
+    console.log(bodyEl.parentNode)//得到了与console.log(htmlEl)一样的代码,即得到与父节点
+  </script>
+</body>
+</html>

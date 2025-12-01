@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    integrity: 校验文件是否被篡改(哈希值)
+    crossorigin: 加载不同源的资源时，浏览器是否需要携带认证信息(例如：cookie、HTTP认证基本认证信息等)
+      anonymous: 不携带任何认证信息(匿名)
+      use-credentials: 需要携带认证信息(例如：cookie、HTTP认证基本认证信息等)
+   -->
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    console.log("%O", jQuery)//%O会将对象以可读格式打印出来
+    console.log(jQuery == $)
+    //在页面打印"hello world"
+    //原生js写法：
+    // document.querySelector('body').innerHTML = 'hello world'
+    //jQuery写法：
+    $('body').text('hello world')
+    //jQuery写法二
+    // jQuery('body').html('<h1>hello world</h1>')
+    
+  </script>
+</body>
+</html>

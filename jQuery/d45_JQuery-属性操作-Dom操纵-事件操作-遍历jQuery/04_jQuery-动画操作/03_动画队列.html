@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  ul {
+    position: relative;
+  }
+</style>
+<body>
+  <button class="queue">查看动画队列</button>
+  <button class="stop">停止</button>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      $('ul').animate({
+        top:100
+      },2000)
+      $('ul').animate({
+        left:100
+      },2000)
+      $('ul').animate({
+        top:0
+      },2000)
+      $('ul').animate({
+        left:0
+      },2000)
+
+      //查看动画队列
+      $('.queue').click(function(){
+        console.log($('ul').queue())
+      })
+      $('.stop').click(function() {
+        // $('ul').stop()//停止当期的动画队列,还会执行下一个动画队列
+        //默认值$('ul').stop(false,false)
+
+        // $('ul').stop(true)//停止当期的动画队列,不会执行下一个动画队列
+        $('ul').stop(true,true)//立刻执行完当前动画队列,同时删除其他动画队列
+      })
+
+    })
+  </script>
+</body>
+</html>
+</html>

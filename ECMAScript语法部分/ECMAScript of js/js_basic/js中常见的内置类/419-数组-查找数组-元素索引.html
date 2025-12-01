@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = ['a','b','c']
+    console.log(arr.indexOf('a'))//0
+    console.log(arr.includes('c'))//true
+    //查找数组元素的索引,一般公司中看不到具体数据
+    var findIndex = arr.findIndex(function(item,index,arr){
+      return item === 'b'
+    })
+    console.log(findIndex)//1
+    
+  </script>
+</body>
+</html>

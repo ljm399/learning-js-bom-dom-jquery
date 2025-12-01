@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var foo=function(){
+      alert('hello')
+    }
+    foo()
+    //二
+    bar=foo
+    bar()
+    //三
+    function bar(fn){
+      console.log('fn',fn)
+    }
+    bar(foo)
+    //四(一)
+    function ni(){
+      return foo
+      function foo1(){//四(二)
+        alert('nihao')
+      };
+      return foo1
+    }
+    console.log(ni())
+    function bar1(){}
+    function bar2(){}
+    var aa=[bar1,bar2]
+    console.log(aa)
+  </script>
+</body>
+</html>

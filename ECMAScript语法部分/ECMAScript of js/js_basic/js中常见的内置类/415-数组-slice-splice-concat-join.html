@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //slice区别与splice,slice不改变原数组只截取
+    var arr = ['a','b','c','d']
+    console.log(arr.slice(1,3))//['b','c']
+    console.log(arr.slice(-1,-3))//[]不支持负号
+
+    //concat
+    var arr1 = ['e','g','h','i']
+    var arr2 = ['j','k','l']
+    console.log(arr.concat(arr1))//['a', 'b', 'c', 'd', 'e', 'g', 'h', 'i']
+    console.log(arr.concat(arr1,arr2))//与下面一样
+    console.log(arr.concat(arr1).concat(arr2))// ['a', 'b', 'c', 'd', 'e', 'g', 'h', 'i', 'j', 'k', 'l']
+    console.log(arr.concat(...arr1))//['a', 'b', 'c', 'd', 'e', 'g', 'h', 'i']
+
+    //join
+    console.log(arr.join('-'))//a-b-c-d
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    arr = [30,23.2,23.1,234.32,123,32,12.23]
+    //sort方法也是高阶函数,只是对原来数组的数据进行排列未产生新数组
+    arr.sort(function(item1,item2){
+      return item2-item1//倒序
+      return item1-item2//正序
+      //返回的是
+    })
+    console.log(arr)
+    
+    arrobj = [
+      {id:99,name:'cao'},
+      {id:55,name:'mai'}
+    ]
+    console.log(arrobj.sort(function(item1,item2){
+      return item1.id-item2.id
+    }))//别耐用这个方式调用,如arrobj整个对象,而不是只有arrobj的数据
+    
+
+  </script>
+</body>
+</html>

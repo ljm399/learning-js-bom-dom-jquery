@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我是注释 -->
+  <div class="box">i am div</div>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script>
+    var bodyEl = document.body//这一步与节点之间的导航一样
+    console.log(bodyEl.children)//HTMLCollection(3) [div.box, ul, script],节点是childNodes
+    
+    //获得box元素
+    console.log(bodyEl.firstElementChild)//box元素,元素包括内容和标签(tag),节点是firstChildren
+    console.log(bodyEl.children[0])//一样
+
+    //获得ul元素
+    var ulEL = bodyEl.firstElementChild.nextElementSibling
+    console.log(ulEL)//ul元素
+
+    //获得li元素
+    console.log(ulEL.firstElementChild)//第一个li元素
+    console.log(ulEL.children[0])//第一个里元素
+    console.log(ulEL.children)//HTMLCollection(3) [li, li, li]
+
+  </script>
+</body>
+</html>

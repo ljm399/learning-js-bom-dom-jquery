@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">change</button>
+  <!-- hidden:所有元素共有的属性 -->
+  <div id="box" class="bar" title="title" style="color: red;" >hahaha</div>
+
+  <script>
+    var boxEL = document.querySelector('#box')
+    var btnEL = document.querySelector('.btn')
+    btnEL.onclick = function(){
+      //1,只是隐藏
+      //way一
+      // boxEL.hidden = true//效果只有隐藏,无切换
+      // way二
+      // boxEL.style.display = 'none'//效果与way一一样
+
+      //2,切换
+      // if(boxEL.hidden){
+      //   boxEL.hidden = false
+      // }else if(!boxEL.hidden){
+      //   boxEL.hidden = true
+      // }
+
+      //3,直接取反
+      boxEL.hidden = !boxEL.hidden
+    }
+  </script>
+</body>
+</html>

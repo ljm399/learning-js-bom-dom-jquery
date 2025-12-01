@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var cao = [11, 22, 33]
+    //删除与增加
+    cao.push(44,55)
+    console.log(cao)//[11,22,33,44,55],后面增加
+    cao.unshift(66,77)
+    console.log(cao)//[66,77,11......],前面增加了66,77
+
+    console.log(cao.pop())//删了最后的55
+    //别赖勇console.log
+
+    //splice 替代删修增
+    var mai = [1,2,3,4,5]
+    //删
+    // console.log(mai.splice(3,1))//3是索引
+    // console.log(mai)//[1,2,3,5] 用delete他删了但位置还在
+    
+    //增
+    console.log(mai.splice(3,1,'我是2还是3','wwoww'))
+    console.log(mai)//[1, 2, 3, '我是2还是3', 'wwoww', 5]
+
+    //修.split是分离
+    console.log(mai.splice(3,2,'我是4','我是5'))
+    console.log(mai)//[1, 2, 3, '我是4', '我是5']
+  </script>
+</body>
+</html>

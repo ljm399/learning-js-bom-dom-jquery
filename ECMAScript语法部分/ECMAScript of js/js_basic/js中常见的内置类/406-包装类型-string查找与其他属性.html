@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var xing = 'cao mai'
+    var ming = 'mai'
+    console.log(xing.indexOf(ming))//-1
+    console.log(xing.indexOf('c'))//c无引号会报错,'c'放回索引位置0
+
+    console.log(xing.includes(ming))//false
+    console.log(xing.includes('a'))//true
+
+    console.log(xing.startsWith('cao'))  //true
+    console.log(xing.endsWith('o'))  //trre
+
+    console.log(xing.replace('mai','junhao'))
+    //cao junhao,省略了var xing2 = xing.repace..与console.log(xing2)
+
+    console.log(xing.replace('mai',function(){
+      return 'junhao'//没加引号会报错
+    }))//加括号就会有方法的解释,打印cao junhao
+    /*
+    省略了var xing3 = xing...与console.log()
+    以及这里function(){}变成了立刻执行函数
+    */
+  </script>
+</body>
+</html>

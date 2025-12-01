@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <input type="text" class="user" placeholder="用户名">
+  <input type="password" class="pwd" placeholder="密码">
+  <button>登录</button>
+
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+       // 1. text
+       //1.1 拿到ul中所有的文本
+       console.log($('ul').text());
+       //1.2 设置li中的文本(给所有的li设置文本内容为我是li)
+       $('ul li').text('我是li')
+
+       //2.html
+       // 2.1.拿到ul中所有的html标签
+       console.log($('ul').html())
+       // 2.2 设置li中的html标签
+       $('ul li').html(`
+            <p>我是段落</p>
+        `)
+
+        //3.val
+        // 3.1. 获取表单数据
+        $('button').click(function() {
+          console.log($('.user').val())
+          console.log($('.pwd').val())
+        })
+
+        // 3.2 设置表单数据
+        $('.user').val('张三')
+        $('.pwd').val('123456')
+    })
+  </script>
+</body>
+</html>
+</html>

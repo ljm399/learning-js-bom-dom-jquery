@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+    }
+    /* 为什么span不设display:block也可设宽高,因为flex-item不严格区分这些
+     */
+    span{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span></span>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <script>
+    var boxEl = document.querySelector('.box')
+    var spanEl = boxEl.querySelector('span')
+    var bodyEl = document.body
+
+    boxEl.onclick = function(event) {//点了什么,做了什么都会储存在event对象中
+      console.log('事件类型',event.type)//click
+      console.log('事件阶段',event.eventPhase)//看思导图片,phase阶段,你这里是对div不是span但二者都有冒泡(推荐有div一可用事件委托,二可以看到捕获过程,用span.onclick看不到),3是你点了span指的是处于span到div这个冒泡过程中,2则是捕获,即box到span这个捕获过程
+
+      //少使用
+      console.log('事件在元素中位置', event.offsetX, event.offsetY)
+      console.log('事件在客户端中位置', event.clientX, event.clientY)
+      /* 
+        以 浏览器窗口 的左上角（0,0）为基准。
+        不会受页面滚动影响，始终是相对于 可视区域（即当前浏览器窗口可见部分）
+      */
+
+      console.log('事件在页面找那个的位置',event.pageX, event.pageY)//与上面区别,这个包括滚动条滚动的高度
+      /* 
+        以 整个文档的左上角（0,0）为基准。
+        会受页面滚动影响，即如果页面向下滚动，pageY 也会增加。
+       */
+
+
+      // 包括窗口,上面不包括
+      console.log('事件在屏幕中的位置', event.screenX, event.screenY)
+
+      //3,target/currentTarget
+      console.log(event)//对像
+      console.log(event.target)//(点div)div元素,(点span,)span
+      console.log(event.currentTarget)//(点div)div元素,(点span,div元素,指的是被冒泡的对象,即被span冒泡给的div)
+      console.log(event.target === event.currentTarget)//点div,true,但点span,false
+    }
+  </script>
+</body>
+</html>

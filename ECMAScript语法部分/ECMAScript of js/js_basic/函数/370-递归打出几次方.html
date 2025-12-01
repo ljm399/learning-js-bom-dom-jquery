@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // function pow(x,n){
+      //   if(n==1) return x,只要是return则下面代码不执行
+      //   return x*pow(x,n-1)
+      // }
+      // // alert(pow(2,3))
+      // console.log(pow(2,3))
+      
+      function arb(n) {
+        if(n==1||n==2){
+          return 1
+        }
+        return arb(n-1)+arb(n-2)
+      }
+      console.log(arb(6))
+    </script>
+</body>
+</html>

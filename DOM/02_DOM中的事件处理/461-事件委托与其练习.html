@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      width: auto;
+      background-color: red;
+    }
+    ul{
+      height: 300px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <script>
+    var liEls = document.querySelectorAll('li')
+    var ulEL = document.querySelector('ul')
+
+    //事件绑定li上来实现点击有active
+    // for(var liEl of liEls) {
+    //   liEl.onclick = function(event) {
+    //     //不是立刻执行函数与this的其他办法:event
+    //     // console.log(this)//this就是指向liEl这个对象,这时创了liels.length+1个liEl.onclick,不是创了个liEL对象集合
+    //     // event.target.classList.add('active')//不用加.
+    //     event.currentTarget.classList.add('active')
+    //     console.log(event.currentTarget)//依旧是li的原因,没同时满足:1,事件绑定(非触发)对象是父元素而非子元素(这没满足),2,点子元素(则target是li这只事件触发的元素即点了li,target(在满足了第一点),则下一步就是冒泡了,而ul就是被冒泡的对象,所有打印ul)
+    //     console.log(event.target)
+    //   }
+    // }
+    //对target与currentTarget的区别的解释
+    // ulEL.onclick = function(event) {//对ulEL点的上面是liEl
+      
+    //   console.log(event.currentTarget)//这次点ul是ul,ul到li是捕获;点li是ul,li到ul是冒泡,而ul就是被冒泡那个
+    //   console.log(event.currentTarget.eventPhase)
+    // }
+
+    //事件绑定ul上来实现点击有active(事件委托)
+    // ulEL.onclick = function(event) {
+    //   event.target.classList.add('active')
+    // }
+
+
+    var activeEl = null
+    //新需求:点li变active,其他取消active(事件委托)
+    //非数组不能用foreach,find方法但可以用for of,for var    
+    ulEL.onclick = function(event) {
+      //1,for,但性能低,因为要储存length个li与函数
+      // for(var i = 0; i < ulEL.children.length; i++ ) {
+      //   ulEL.children[i].classList.remove('active')
+      // }
+
+      //2,找到active,再移除
+      // var activeEl = document.querySelector('.active')
+      // console.log(activeEl)
+      // if(activeEl){
+      //   activeEl.classList.remove('active')
+      // }
+      
+      //3,变量记录(即默认值)的方式,也是找到再移除
+      var activeEl = document.querySelector('.active')
+      activeEl && activeEl.classList.remove('active')//&&与,若&&前是假值则直接返回active,一般为null而不执行后面,若两个都是真值则只返回后面那个值
+
+      //问题:上面方法点即ul就全红(这个在462)
+      //方法一
+      // if(event.target !== ulEL){
+
+        // 方法二
+      if(event.target.tagName === 'LI'){//'li'是大写
+        event.target.classList.add('active')//优化了,不用储存length个xx了
+      }
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">按钮1</button>
+  <button class="btn">按钮2</button>
+  <button class="btn">按钮3</button>
+  <button class="btn">按钮4</button>
+  <script>
+    var btnEL = document.querySelectorAll('.btn')//.btn你无点
+    for(var i = 0; i< btnEL.length; i++){
+      btnEL[i].onclick = function() {
+        // console.log(`点击了第${i+1}个按钮`)
+      }
+    }
+    
+    btnEL[i].onclick()//不用在调用,点击一次就是调用了
+
+    var btnEL = document.querySelectorAll('.btn')//.btn你无点
+    for(var i = 0; i < btnEL.length; i++) {
+
+      btnEL[i].onclick = (function() {
+        console.log(`点击了第${i+1}个按钮`)
+      })//不行 改var为let就行,但没学以后补充
+
+      (function() {
+        console.log(`点击了第${i+1}个按钮`)
+      })().onclick//不行
+        debugger
+
+      对上面的修改
+      (function(m) {//贮存在argument中,我没明确自己的问题是什么
+        btnEL[m].onclick = function() {
+        console.log(`点击了第${m+1}个按钮`)
+        }
+      })(i)  //对了
+
+        
+      var express = (function(m) {
+        btnEL[m].onclick=click//no click()        
+        function click() {
+        console.log(`点击了第${m+1}个按钮`)
+        };
+      })(i)
+
+    //  function aa(){
+    //   alert('nihoa')
+    //  }
+    //  var bb=aa()//你这相当于调用了aa函数无论是否是表达式
+    }//给你看一遍你自己在做一边依旧不会,所有可以看一遍不用担心除非特别明确问题
+    // console.log(i)
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var cao = ['cao', 'mjl', 'jas']
+    console.log(cao[-1])//undefined
+    console.log(cao.at(-1))//jas-1生效
+    console.log(cao.at(1))//mjl
+
+    //修,array可以修改
+    cao[1]='micheal'
+    console.log(cao)
+
+    //增
+    cao[3]='cao'
+    cao[10]='cao'//length:11
+
+    //删
+    delete cao[1]//位置都在
+    console.log(cao,cao[1])//undefined
+  </script>
+</body>
+</html>

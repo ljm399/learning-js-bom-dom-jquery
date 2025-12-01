@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/command.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/lunbo.css">
+    <link rel="stylesheet" href="./css/crumb-products-operaction.css">
+</head>
+<body>
+    <div class="cover">
+        <img src="./img/lunbo01.webp" alt="" class="lunbo active">
+        <img src="./img/lunbo02.webp" alt="" class="lunbo">
+        <img src="./img/lunbo03.webp" alt="" class="lunbo">
+        <img src="./img/lunbo04.webp" alt="" class="lunbo">
+        <img src="./img/lunbo05.webp" alt="" class="lunbo ">
+        <button class="pre"></button>
+        <button class="next"></button>
+        <ul class="indicator">
+            <li class="cycle light"></li>
+            <li class="cycle"></li>
+            <li class="cycle"></li>
+            <li class="cycle"></li>
+            <li class="cycle"></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+      <!-- 标题(首页) -->
+      <p class="crumb"><span>首页</span>&gt;<span>笔记本</span></p>
+
+      <!-- 切换栏 -->
+      <div class="operation">
+          <ul class="category">
+              <li class="itme">分类:</li>    
+              <li class="itme">笔记本</li>    
+              <li class="itme">台式机</li>    
+              <li class="itme">智慧屏</li>    
+          </ul>
+          <ul class="discount">
+              <li class="itme ">服务优惠:</li>    
+              <li class="itme ">仅看有货</li>    
+              <li class="itme">分期免息</li>    
+              <li class="itme">优惠商品</li>    
+          </ul>
+          <ul class="sort">
+              <li class="itme" data-key="default">排序:</li>    
+              <li class="itme">综合</li>    
+              <li class="itme">最新</li>    
+              <li class="itme">评论数</li>    
+              <li class="itme" data-key="price">价格</li>    
+          </ul>
+      </div>
+      
+      <!-- item -->
+      <ul class="products"></ul>
+  </div>
+
+    <script src="./data/data.js"></script>
+    <script>
+        lunbo()
+        screen()
+        function lunbo() {
+
+            var btnNext = document.querySelector('.next')
+            var btnpre = document.querySelector('.pre')
+            var index = 0
+            var imgEl = document.querySelectorAll('.lunbo')
+            var coverEl = document.querySelector('.cover')
+            var cycleEl = document.querySelectorAll('.indicator li')
+            //步骤一:先轮播图片
+            var time = null
+            start()
+    
+            //悬浮在上面就停止轮播
+            coverEl.onmouseenter = function() {
+                clearInterval(time)
+                time = null//不赋值为1,则if判断为true,而不是falsy
+            }
+            coverEl.onmouseleave = function() {
+                if(time) return//因为有可能同时两个计时器一起工作的bug
+                start()    
+            }
+    
+            //由于要停止与开始轮播，即多次用到，封装函数
+            function start() {
+                 time = setInterval(function() {
+                    imgEl[index].classList.remove('active')
+                    cycleEl[index].classList.remove('light')
+                   
+                    index = (index + 1) % imgEl.length
+                    imgEl[index].classList.add('active')
+                    cycleEl[index].classList.add('light')
+                }
+                , 2000);
+            }
+    
+    
+            //步骤二:点击按钮切换图片
+            btnNext.onclick = function() {
+                changeImg()
+                // if( indexChange === 4) {
+                //     indexChange = -1
+                // }
+                // imgEl[indexChange + 1].classList.add('active')
+                // cycleEl[indexChange + 1].classList.add('light')
+
+                //优化:目的:让其与相同意思的代码的变化的少一点
+                indexChange = (indexChange + 1) % imgEl.length//能变量如imgEL.length就用
+
+                imgEl[indexChange].classList.add('active')
+                cycleEl[indexChange].classList.add('light')
+            }
+    
+            btnpre.onclick = function() {
+                changeImg()
+                // 问题是0-1有问题,故加+imgEl.length,直接进入下一个循环
+                indexChange = (indexChange - 1 + imgEl.length) % imgEl.length
+                imgEl[indexChange].classList.add('active')
+                cycleEl[indexChange].classList.add('light')
+
+            }
+
+            //切换图片代码优化
+            var indexChange = 0//函数内部用或者没有var都为局部变量,必须先在函数外声明
+            function changeImg() {
+                //为什么我封装了函数,然后调用会出现undefind
+                var activeEl = document.querySelector('.active')
+                indexChange = Array.from(imgEl).indexOf(activeEl)//获取当前active元素在数组中的索引
+                
+                imgEl[indexChange].classList.remove('active')
+                cycleEl[indexChange].classList.remove('light')
+            }
+
+            
+
+
+            //步骤三:点击小圆点切换图片
+            
+            for(var i = 0;i < cycleEl.length;i++) {
+
+                // 为每个小圆点绑定点击事件(这里相当于有cycleEl.length个函数)
+                cycleEl[i].onclick = function() {
+                    changeImg()
+
+                    var  cycleIndex = Array.from(cycleEl).indexOf(this)
+                    
+                    imgEl[cycleIndex].classList.add('active')
+                    cycleEl[cycleIndex].classList.add('light')
+                    index = cycleIndex
+                }
+            }
+
+            //不看时自动停止轮播
+            document.onvisibilitychange = function() {
+                if (document.visibilityState === 'visible') {
+                    if(time) return
+                    start()
+            }else {
+                // if(!time) return
+                clearInterval(time)
+                time = null
+            }}
+        }
+
+
+        function screen() {
+
+            var ulEl = document.querySelector('.products')
+
+            //开始必须先把全部展示
+            showAll(resultList)
+
+
+            var discountEl = document.querySelector('.discount')
+            var discountItem = discountEl.children
+            var container = []
+            for (var item = 0; item < discountItem.length; item++) {
+            discountItem[item].onclick = function() {
+                this.classList.toggle('active')
+                if (this.classList.contains('active')) {
+                    // trim() 是 JavaScript 字符串（String） 的一个方法，它的作用是去除字符串两端的空格和换行符，但不会影响字符串中间的空格。
+                    container.push(this.textContent.trim()) 
+                }else {
+                    // findIndex适用于更复杂的查找逻辑，比 indexOf() 更强大。
+                    var thisIndex =  container.findIndex(function(item) {
+                        return item === this.textContent
+                    })
+                    container.splice(thisIndex,1)
+                }
+                var showData = resultList.filter(function(item) {
+                    var newServices = item.services
+                    var bool = true
+                    for (var newSon of container) {
+                        if (!newServices.includes(newSon)) {
+                            bool = false
+                        }    
+                    }
+                    return bool
+                })
+                    showAll(showData)
+            }
+
+            }
+
+            //排序
+            //首先:纵览全局
+            //1,先获取点击的元素
+            //2,点击的元素加上active
+            //3,看active的个数,有就排序,同时排他思想(只留一个)
+            //4,用data-key获取源数据(不用修改),然后排序
+
+            var sortEl = document.querySelector('.sort')
+            for (var SortItem of sortEl.children) {
+                SortItem.onclick = function() {
+                    
+                    for (var i = 0; i < sortEl.children.length; i++) {
+                        sortEl.children[i].classList.remove('active')
+                    }
+                    this.classList.toggle('active')
+                    var sortKey = this.dataset['key']
+                    if (sortKey === 'default') {
+                        showAll(resultList)
+                    }else {
+                        // var sortData = resultList.sort(function(a,b) {
+                        //     return a[sortKey] - b[sortKey]
+                        // })
+
+                        // 优化,上面会修改源数据,虽然data.js中没修改,但改了data.js存于当前页面的数据
+                        // .slice()复刻数组,不修改源数据
+                        var sortData = resultList.slice().sort((a, b) => a[sortKey] - b[sortKey]);
+                        showAll(sortData)
+                    }
+                                        
+                }
+            }
+    
+
+            function showAll(arg) {
+                ulEl.innerHTML = `
+                
+                `
+
+                for(var i = 0; i < arg.length; i++) {
+                    var tipEl =   ''
+                    var tipEl =   ''
+                    for(var i2 = 0; i2 < arg[i].tip.length; i2++) {
+                        tipEl += `<span>${arg[i].tip[i2]}</span>`    
+                    }
+                    var liEl = document.createElement('li')
+                    liEl.classList.add('item')
+                    ulEl.append(liEl)
+                    liEl.innerHTML = `
+                            <a href="#">
+                            <img src="${arg[i].src}" alt="" class="album">
+                            <div class="name">${arg[i].name}</div>
+                            <div class="discount">${arg[i].discount}</div>
+                            <div class="price">${arg[i].price}</div>
+                            <div class="tip">
+                                ${tipEl}
+                            </div>
+                            <div class="comment">
+                                <span>${arg[i].comment[0]}</span>人
+                                <span>${arg[i].comment[1]}</span>%好评
+                            </div>
+                                </a>
+                                `
+                    }
+
+                    for(var space = 0; space < 2; space++) {
+                    var spaceSpan = document.createElement('li')
+                    spaceSpan.classList.add('space')
+                    ulEl.append(spaceSpan)
+                }
+                        }
+    } 
+    </script>
+</body>
+</html>

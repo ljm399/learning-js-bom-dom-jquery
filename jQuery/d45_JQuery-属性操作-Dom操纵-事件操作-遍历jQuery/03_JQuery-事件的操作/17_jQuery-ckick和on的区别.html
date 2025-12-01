@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 区别主要在on上
+      //1 on支持命名空间(click.ul)
+      //2.有个selector的参数，可以指定事件源
+
+      $('ul').on('click.ul',".li-4",function() {
+        console.log('li-4被点击了');
+      
+      })
+    })
+  </script>
+</body>
+</html>
+</html>

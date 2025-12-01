@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      //1. 获取data属性
+      console.log($('ul').data())//{name: "codecao", age: 18}
+
+      //2. 设置data属性
+      $('ul').data('class', '一班')//设置到ul对象上即prop，但是没有在html中体现出来
+
+      console.log($('ul').data("class"))//先去缓存上面找,再去html中找，找不到返回undefined
+      /* 
+        上面结果
+        jQuery360080772440920522692: {age: 18, name: 'codecao', class: '一班'}
+        jQuery360080772440920522691: {hasDataAttrs: true}
+       */
+      console.log("%O",$('ul'))
+
+
+      //3. 删除data属性
+      $('ul').removeData('name')
+
+    })
+  </script>
+    <ul data-name="codecao" data-age="18">
+      <li class="li-1">item1</li>
+      <li class="li-2">item2</li>
+      <li class="li-3">item3</li>
+      <li class="li-4">item4</li>
+      <li class="li-5">item5</li>
+    </ul>
+</body>
+</html>
+</html>

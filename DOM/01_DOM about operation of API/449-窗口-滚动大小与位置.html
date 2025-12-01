@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btnEL{
+      position: fixed;
+      top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <button class="btnEL">点我</button>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <script>
+    console.log('innerheight',window.innerHeight)
+    console.log(window.innerWidth)//获得窗口大小包括滚动条
+
+    console.log(window.outerHeight,'outerhight')//获得window窗口包括调试工具与工具栏
+    console.log(window.outerWidth)
+
+    console.log(document.documentElement.clientHeight,'clientheitht')//获取HTML元素的宽高(与innerHeight一样但不包括工具栏)
+    console.log(document.documentElement.clientWidth)//documetnElemet是html
+
+    console.log(document.documentElement.offsetWidth,'offsetwidth')//获取html效果看参考448
+    console.log(document.documentElement.offsetHeight,"offsetheright")
+
+    window.onclick = function(){
+      console.log(window.scrollX,'scrollx')//获取window滚动了多少的区域
+      console.log(window.scrollY)
+    } 
+    
+    var btnEL = document.querySelector('.btnEL')
+    btnEL.onclick = function() {
+      // window.scrollBy(0,100)//相对位置,即点了一次下次点还会跳
+      window.scrollTo(0,100)//绝对位置,点了一吃不会再动
+    }
+
+    btnEL.hidden = true
+    window.onscroll = function() {
+      var scrollY = window.scrollY
+      if (scrollY > 100) {
+        btnEL.hidden = false
+      }else {
+        btnEL.hidden = true
+      }//也可以用display为none
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var name = new Array('cao', 'mai', 'junhao', 'mjl')
+    var bar = new Array('cao', 'mai', 'junhao', 'mjl')
+    console.log(bar,typeof bar)//object,array就是特殊的object
+    var nae = ['cao', 'mai']
+    console.log(name,typeof name)//string
+    //别用name当变量,他会把数组变为字符串格式cao,mai,junhao,mjl
+    console.log(nae,typeof nae)
+    var name = [1,23,4]
+    console.log(name,typeof name)//这个也一样,变为了string
+
+    console.log(bar[0])//cao
+    console.log(bar[9])
+    console.log(bar[-1])
+    console.log(name[-1])//什么三个都是undefined,注意name为string也不行
+    //-1是为了访问最后一个数据,这不行,那用什么
+    console.log(bar[bar.length-1])
+
+    console.log(bar[5])//undefined
+    console.log(new Array(5))//与上面不同,默认为length长度为5
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="addbtn">+</button>
+  <button class="subbtn">-</button>
+  <div class="couter">0</div>
+
+  <script>
+    var addbtnEL = document.querySelector('.addbtn')
+    var subbtnEl = document.querySelector('.subbtn')
+    var couterEl = document.querySelector('.couter')
+
+    // btnEL.onclick = function(){
+    //   console.log('couter开始计时')
+    // }//先创个模型给自己一点信心
+      couter = 1
+    addbtnEL.onclick = function(){
+      couter++
+      couterEl.textContent = couter
+    }
+    subbtnEl.onclick = function(){
+      couter--
+      couterEl.textContent = couter
+    }
+
+  </script>
+</body>
+</html>

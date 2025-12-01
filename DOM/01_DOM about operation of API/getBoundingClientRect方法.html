@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    /* p {
+      height: 700px;
+    } */
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    window.onclick = function () {
+
+      var div = document.querySelector('div')
+      console.log(div.getBoundingClientRect())//有四个属性，分别是：top, right(108), bottom(108), left
+      //x,y是相对于视口左上角的位置(8,8)
+      console.log(div.getBoundingClientRect().top)
+    }
+  </script>
+</body>
+</html>

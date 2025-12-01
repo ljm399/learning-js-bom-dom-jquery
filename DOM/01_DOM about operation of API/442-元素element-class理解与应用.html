@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    i am DIV
+  </div>
+  <button class="btn"></button>
+
+  <script>
+    boxEl = document.querySelector('.box') 
+
+    //1方法一:className
+    // boxEl.className = 'abc'//class全改为了abc
+    
+    //2,方法二;classList
+    boxEl.classList.add('abc')
+    boxEl.classList.add('abc1')
+    boxEl.classList.remove('abc')//只移除abc
+    
+    //需求,点击就移除class(用到classLIst属性中的contain)
+    window.onclick = function() {
+      // if(boxEl.classList.contains('abc1')){
+      //   boxEl.classList.remove('abc1')
+      // } else{
+      //   boxEl.classList.add('abc1')
+      // }
+      //与上面一样作用的classList的属性
+        boxEl.classList.toggle('taggle')//有就移除没有就创建
+    }
+  </script>
+</body>
+</html>

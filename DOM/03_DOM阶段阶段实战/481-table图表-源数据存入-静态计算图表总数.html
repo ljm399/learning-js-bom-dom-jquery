@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border-collapse:collapse
+    }
+    td{
+      border: 1px solid black;
+      padding : 5px 6px ;
+      text-align: center;
+    }
+    tr:first-child td{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+  
+<body>
+  <table>
+    <tr>
+      <td>编号</td>
+      <td>书籍名称</td>
+      <td>出版日期</td>
+      <td>价格</td>
+      <td>购买数量</td>
+      <td>操作</td>
+    </tr>
+  </table>
+  <h1>$<span></span></h1>
+  <script>
+    var foo = [
+      {
+        numb : 1,
+        name : '<三体>',
+        time : '2002-2-2',
+        price : '200',
+        buy : 3
+      },
+      {
+        numb : 2,
+        name : '<城南往事>',
+        time : '2003-2-2',
+        price : '201',
+        buy : 4
+      },
+      {
+        numb : 3,
+        name : '<活着>',
+        time : '2004-2-2',
+        price : '203',
+        buy : 3
+      },
+      {
+        numb : 4,
+        name : '<查理世界>',
+        time : '2002-2-2',
+        price : '200',
+        buy : 3
+      }
+
+    ]
+      //有规律的源数据可以用js,其他用html,源数据不能修改手动修改,但可js修改,如是有两个函数都用一个源数据最好不要修改
+
+      var tableEl = document.querySelector('table')
+      
+      for(var fooitem of foo) {
+
+        // console.log(fooitem)//fooitem是个集合,不是如同fot(var i)那样,里面循环完成再执行外面循环
+
+        var trEl = document.createElement('tr')//不能在函数外面,只能在这里,否则当只有一个,然后不断覆盖
+        var keys = Object.keys(fooitem)
+
+        for(var i = 0; i < keys.length; i++) {
+
+          var tdEl = document.createElement('td')//与tr一样只能在for里面
+          var key = keys[i]
+
+          // if(key === 'price') fooitem[key] = '$'+fooitem[key]//不能修改foo源数据里面的内容!,否则后面那个计算总是不是Num
+
+
+          var value = fooitem[key]//是fooitem不是keys的
+          if(key === 'price') value = '$' + value
+
+          tdEl.textContent = value
+          trEl.append(tdEl)
+          tableEl.append(trEl)      
+
+        }
+        
+        //   //添加删除按钮
+
+        var tdEl2 = document.createElement('td')//只能在这里在里面会替换for里面的append
+        var buttonEl = document.createElement('button')
+        buttonEl.textContent = '删除'
+        tdEl2.append(buttonEl)
+        trEl.append(tdEl2)
+        tableEl.append(trEl)
+      }
+      
+      var priceEl = document.querySelector('span')
+      var total = 0
+
+      //计算总数方法一:嵌套for,源数据不能修改,调用对象里面数据办法一
+      // for(var fooitem2 of foo){
+      //   // console.log(fooitem2.length)//undefined
+      //   var keys = Object.keys(fooitem2)//不能少
+      //   // console.log(keys)//以数组形式存储fooitem2的对象---
+
+      //   for(var i = 0; i<keys.length ; i++){
+      //     var key = keys[i]   
+      //     if(key === 'price'){
+      //       total += fooitem2[key]*fooitem2[keys[i+1]]
+      //     }
+      //   }
+      //   priceEl.textContent =  total
+      // }
+
+      //方法二:优化调用数组里面对象的数据调用
+      // for(var i= 0; i < foo.length; i++){
+      //   total += foo[i].price * foo[i].buy
+      // }
+      //   priceEl.textContent =  total
+      
+      // 方法三:使用类/函数(数组方法多,自己去MDN查!)
+      var total = foo.reduce(function(preValue,item){
+        return preValue + item.buy * item.price
+      },0)//preValue相当于total+=这一步
+      priceEl.textContent = total
+
+  
+  </script>
+</body>
+</html>

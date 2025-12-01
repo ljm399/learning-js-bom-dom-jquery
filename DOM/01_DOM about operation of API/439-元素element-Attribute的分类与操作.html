@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 属性(attribute(特性))的分类:
+          1,如果是HTML标准制定的attribute就为标准Attribute
+          2,自定义的Attribute为非标准Attribute -->
+  <div id="id" class="bar" title="title"
+  age="18" height="1.99" ming="mai">
+  i am div</div>  
+    <input type="checkbox" name="" id="" checked>
+    <input type="checkbox" class="checkbox" checked="checked">
+
+  <script>
+    var boxEl = document.querySelector('.bar')
+    console.log(boxEl)
+    //1,所有的Attribute都支持的操纵
+    // 1-1检查存在
+    console.log(boxEl.hasAttribute('mai'))//false
+    console.log(boxEl.hasAttribute('ming'))//true
+
+    //1-2获得特性(属性)值
+    console.log(boxEl.getAttribute('mai'))//null
+    console.log(boxEl.getAttribute('ming'))//mai
+
+    // 1-3设置属性
+    boxEl.setAttribute('xing','cao')//前为属性名,后为属性值
+    console.log(boxEl.getAttribute('xing'))//cao
+
+    //1-4remove属性
+    boxEl.removeAttribute('xing')
+    console.log(boxEl.getAttribute('xing'))//null
+
+    //1-5
+    //不区分大小写
+    console.log(boxEl.getAttribute('MING'))//mai
+    //总是字符串
+
+    // 对上面属性遍历(for)
+    var boxAttribute = boxEl.attributes
+    for(var att of boxAttribute){//由于itrable所有可用of
+      // console.log(att.value)//把他属性值全打出来了
+      // console.log(att.name)//把属性名全打出来
+      console.log(att.name,att.value)//结合使用
+    }
+
+    //getAttribute()一定是字符串类型
+    var inputEl =document.querySelector('input')//当只有一个input可以这样用,否则就锁定第一个input
+    var inputEl2 =document.querySelector('.checkbox')
+    console.log(inputEl.getAttribute('checked'))//space
+    console.log(inputEl2.getAttribute('checked'))//checked
+  </script>
+</body>
+</html>

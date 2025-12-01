@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border-collapse:collapse
+    }
+    td{
+      border: 1px solid black;
+      padding : 5px 6px ;
+      text-align: center;
+    }
+    tr:first-child td{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+  
+<body>
+  <table>
+    <tr>
+      <td>编号</td>
+      <td>书籍名称</td>
+      <td>出版日期</td>
+      <td>价格</td>
+      <td>购买数量</td>
+      <td>操作</td>
+    </tr>
+  </table>
+  <h1>$<span></span></h1>
+  <script>
+    var foo = [
+      {
+        numb : 1,
+        name : '<三体>',
+        time : '2002-2-2',
+        price : '20',
+        buy : 3
+      },
+      {
+        numb : 2,
+        name : '<城南往事>',
+        time : '2003-2-2',
+        price : '20',
+        buy : 4
+      },
+      {
+        numb : 3,
+        name : '<活着>',
+        time : '2004-2-2',
+        price : '10',
+        buy : 3
+      },
+      {
+        numb : 4,
+        name : '<查理世界>',
+        time : '2002-2-2',
+        price : '10',
+        buy : 3
+      }
+
+    ]
+
+      var tableEl = document.querySelector('table')
+      
+      for(var fooitem of foo) {
+        var trEl = document.createElement('tr')
+        var keys = Object.keys(fooitem)
+        for(var i = 0; i < keys.length; i++) {
+          var tdEl = document.createElement('td')//与tr一样只能在for里面
+          var key = keys[i]
+          var value = fooitem[key]//是fooitem不是keys的
+          if(key === 'price') value = '$' + value
+
+          tdEl.textContent = value
+          trEl.append(tdEl)
+          tableEl.append(trEl)
+
+        }
+        
+       //   //添加删除按钮
+        var tdEl2 = document.createElement('td')//只能在这里在for里面会替换for里面的append
+        var buttonEl = document.createElement('button')
+        buttonEl.textContent = '删除'
+        tdEl2.append(buttonEl)
+        trEl.append(tdEl2)
+        // tableEl.append(trEl)
+      }
+
+   
+      count()
+      
+      //以下为删除列表
+      function 垃圾(){
+
+        //调用每个button
+        // console.log((tableEl.children))//默认tbody占据tr位置,位置为一
+  
+        // var alltr 
+        // for(var son of Array.from(tableEl.children)){
+        //   if(son.tagName === 'TR')
+        //     // console.log(son)
+        //   alltr//我想存储tr,直接i=1不就没有tbody
+        // }
+  
+        // var itemEl = tableEl.children
+        // console.log(itemEl)
+        // console.log(typeof itemEl)
+        // console.log(typeof(Array.from(itemEl)))
+        // console.log(itemEl[1])
+  
+        // //第一个for一为了去除tbody,二是为了分别打印
+        // for(var i3 = 1; i3 < itemEl.length; i3++) {
+        //   var alltr = itemEl[i3]
+        
+        // }
+      }
+
+
+      //上面(垃圾)全是由外向里,太麻烦了,而且你还没用过,你刚刚学到有里向外,冒泡与事件委托不会用?过去知识没烧开,那我要不要先整体思一次,要,感觉困难就换way(这时你的缺点:自负:过去知识没烧开,想到一个属性就只会用一个,而忘记其他你学过的类似属性)
+      tableEl.onclick = function(event) {
+         var btn = event.target
+         var td = btn.parentElement
+        
+        //  console.log(first)
+         var tr = td.parentElement//由于有tbody在站在索引为0的位置,所以其真正索引要－1
+
+         if(btn.tagName !== 'BUTTON') return
+
+         //删除源数据foo中选中的对象
+
+        //方法一:找到删除tr的索引(for):别忘默认值方法
+        // var itemEl = tableEl.children
+        // for(var i = 1; i < itemEl.length; i++) {
+        //   if(itemEl[i] === tr){
+        //     foo.splice(i-1,1)
+        //     console.log(foo.splice(i,1))
+        //   }
+        // }
+
+        //方法二:tr.sectionRowIndex给定tr在封闭的<thead>/<tbody>/<tfoot>中的位置的索引
+          var trIndex = tr.sectionRowIndex
+          // console.log(tr)
+          // console.log(trIndex)
+
+          // 删除源数据,为了count()重新计算总数
+          foo.splice(trIndex-1,1)
+
+          // 删除tr元素
+          tr.remove()
+        
+         count()
+        
+
+      }
+
+      //由于计算总数用多次,所有封装
+      function count() {
+
+            var priceEl = document.querySelector('span')
+            console.log(priceEl)
+            var total = 0
+
+            var total = foo.reduce(function(preValue,item){
+              return preValue + item.buy * item.price
+            },0)//preValue相当于total+=这一步
+            priceEl.textContent = total
+
+            
+      }
+
+  </script>
+</body>
+</html>

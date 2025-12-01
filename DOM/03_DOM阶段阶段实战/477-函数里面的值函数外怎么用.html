@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 1;
+    // (function(){
+    //   a = 2
+    // })();
+    //立刻执行函数要注意;
+    //a是2,因为a是全局变量内部函数可修改
+    window.onclick = function() {
+      a = 3
+    }
+    console.log(a)//依旧为1,因为函数违背调用
+    setInterval(function() {
+      console.log(a)//a一直为3,动态思维
+    },1000)
+  </script>
+</body>
+</html>

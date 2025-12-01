@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="remove">移除box</button>
+  <button class="clone">复制box</button>
+  <div class="box">
+    i am div
+    <h1>i am h1</h1>
+    <p>i am p</p>
+  </div>
+
+  <script>
+    //1,获取元素
+    var boxEL = document.querySelector('.box')
+    var removeEl = document.querySelector('.remove')
+    var cloneEl = document.querySelector('.clone')
+
+    //移除box,子元素一起移除了
+    removeEl.onclick = function(){
+      boxEL.remove()
+    }
+    var counter = 0
+    //复制box
+    cloneEl.onclick = function(){
+      //克隆
+      // var cloneBox = boxEL.cloneNode//function cloneNode() { [native code] }
+      // var cloneBox = boxEL.cloneNode()//没效果
+      var cloneBox = boxEL.cloneNode(true)//有效
+      // var cloneBox =boxEL.cloneNode(false)//没效果
+      //一定要加(true)表深克隆,即子元素也一样克隆
+      var h1El = document.querySelector('h1')
+      h1El.textContent = 'i am div'+ counter
+      //插入
+      document.body.append(cloneBox)//默认加到元素最后面
+      
+      // boxEL.before(cloneBox)不行.老师也没讲,可能与xx.cloneNode(ture)有关,后面学到再想
+      counter++
+    }
+
+
+   
+
+  </script>
+</body>
+</html>

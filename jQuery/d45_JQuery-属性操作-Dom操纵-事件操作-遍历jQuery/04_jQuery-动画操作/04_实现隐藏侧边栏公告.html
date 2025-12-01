@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+    }
+    .top,.bottom {
+      width: 100px;
+      height: 200px;
+    }
+    .hide {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="box">
+    <div class="top">
+      <div class="hide">x</div>
+      <img class="img" src="./img/微信图片_20240319235602.jpg" alt="">
+    </div>
+    <div class="bottom">
+      <img src="./img/微信图片_20240319235612.jpg" alt="">
+    </div>
+  </div>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      $('.hide').click(function() {
+        $('.box').animate({height:0})
+      })
+    })
+  </script>
+</body>
+</html>
+</html>

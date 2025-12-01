@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1.将item1克隆到ul尾部
+      // var $newitem1 = $('.li-1').clone();
+      // $('ul').append($newitem1);
+
+      //简写
+      $('.li-1').clone().appendTo('ul')
+
+      // 2.将item5的函数和data自定义属性一起克隆
+      $('.li-5').data('name','tom')
+      .click(()=>console.log(".li-5被点击了"))
+      //克隆
+      .clone(true)//true表示克隆事件和数据(深度克隆),第二个true表示把其后代的事件和数据也克隆过来
+      .appendTo('ul')
+
+      console.log("%O",$('.li-5').get(0))//获取第一个元素
+
+
+    })
+  </script>
+</body>
+</html>
+</html>

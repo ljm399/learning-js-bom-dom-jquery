@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      height: 300px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>你好</p>
+    <span>ok</span>
+    <div class="box1">好的</div>
+  </div>
+  <script>
+    let box = document.querySelector('.box');
+    box.onclick = function(event) {
+      console.log(event.target)// 触发事件的那个元素
+
+      console.log('currentTarget', event.currentTarget)//冒泡那个
+      //即效果和mouseover一样
+
+    }
+  </script>
+</body>
+</html>

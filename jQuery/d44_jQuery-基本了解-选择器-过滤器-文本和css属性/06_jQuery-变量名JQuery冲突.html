@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+
+  <!-- 当其他库里面的$符号冲突时，可以使用jQuery.noConflict()来解决 -->
+  
+  <script>  
+    let $ = '我是其他库里面的$符号'
+    let jQuery = '我是其他库里面的jQuery符号'
+    console.log('%o', $)//我是其他库里面的$符号
+    console.log(jQuery)//我是其他库里面的jQuery符号
+    
+    // 解决冲突
+    const $new$ = window.$.noConflict(true)
+    // const $newJ = window.jQuery.noConflict(true)
+    console.log($new$)//JQuery对象
+    console.log(window.jQuery)//undefined
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+    var stu = [
+      {id: 100, name: 'cao'},
+      {id:99, name: 'mai'},//属性or方法名可以不加引号,如同设了变量
+      {id:66, name:'junhao'}
+    ]
+    //版本一,不用函数(最原始)
+    // var bar = null
+    // for(var i of stu){
+    //   if(i.id === 30){
+    //     bar = i
+    //     console.log(i,typeof bar)
+    //   }
+    // }
+    // if(bar){
+    //   console.log(bar)
+    // }else{
+    //   console.log('里面没有对应的值')
+    // }
+
+    //版本二没用高阶函数
+    // console.log(`_________________`)
+    // var bar = null
+    // function Cpfind(arr,score){
+    //   for(var i of arr){
+    //   if(i.id === score){
+    //     bar = i
+    //     // console.log(i)
+    //   }
+    // }
+    // if(bar){
+      //   console.log(bar)
+      // }else{
+        //   console.log('里面没有对应的值')
+        // }
+     // }
+    // Cpfind(stu,66)
+    
+    console.log(`方法四,自己创高阶函数调用`)
+    //方法四,自己创高阶函数调用:有way一与way二
+    Array.prototype.Cpfind = function(fn){
+    var bar = null
+    for(var i of this){
+      //要是想要item,index,names
+      // var bloo = fn(i,i.index,this)然后与way一大概一样
+
+      //way一步骤一
+        // if(fn(i)){
+        //   return i
+        // }
+
+        //way二步骤一
+        fn(i)//way
+    }    
+
+    //way二步骤三
+    return fn(i)//必须有这个,return fn(i)的值,
+   }
+    var stud = stu.Cpfind(function(item){
+
+      //way二步骤二
+      if(item.id === 66){
+        return item
+      }//返回item给了高阶函数(即Cpfind)
+
+      //way一步骤二
+      // return item.id === 66//这是共有的,我只返回我想要的,但返回了true
+    })
+    console.log(stud)
+
+
+    // console.log(`_______________`)
+    // //way四,find方法与forEach区别:find他可以判断,不用加if直接return
+    
+    //数组里面是对象
+    // var student1 = stu.find(function(item, index, names){
+    //   console.log('我是',item)
+    //   console.log('我是',index)
+    //   console.log('i am',names)//这时整个对象,不只是个名,不能用其来调用方法属性
+    //   return item.id === 66
+    // })
+    // console.log(student1)
+
+    //数组里面非数组
+    // var arr = ['abc','bb','cc']
+    // var student = arr.find(function(item,index,names){
+    //   // if (item.id=99)return true//item也行,find他可以自己判断,不用加if,加return就行,return如break
+    //   // return undefined//undefined
+    //   // return names.id = 99//{id: 100, name: 'cao'} 因为na.....为true就只返回第一个,其他被return了
+    //   return item === 'abc'
+    // });
+    // console.log(student);
+    
+
+
+    </script>
+</body>
+</html>

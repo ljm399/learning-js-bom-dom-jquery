@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/command.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        ul{
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        iframe{
+            position: fixed;
+            top: 75;
+            left: 0;
+            /* width: 100%; */
+            width: 0;
+            height: 1000px;
+        }
+        .type li{
+            display: inline-block;
+            height: 75px;
+        }
+        .type li a{
+            display: block;
+            height: 30px;
+            font-size:24px ;
+            text-align: center;
+        }
+        .type li em {
+            display: inline-block;
+            margin-top: 15px;
+            /* height: 30px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <ul class="type">
+                <li><a href="#">苹果</a>  <em>apple</em></li>
+                <li><a href="./huawei.html">华为</a>  <em>China Youwei</em></li>
+                <li><a href="#">小米</a>  <em>xiaomi</em></li>
+            </ul>
+            <iframe src="./huawei.html" frameborder="0"></iframe>
+            <!-- <iframe src="./apple.html" frameborder="0"></iframe> -->
+            <!-- <iframe src="./xiaomi.html" frameborder="0"></iframe> -->
+        </nav>
+
+    </div>
+</body>
+</html>

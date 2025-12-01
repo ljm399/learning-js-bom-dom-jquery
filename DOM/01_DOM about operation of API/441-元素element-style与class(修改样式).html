@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      font-size: 50px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    i am box
+  </div>
+  
+  <script>
+    var boxEL = document.querySelector('.box')// as HTMLDivElement让boxEl.有提示
+
+    //监听点击(点击事件)
+    count = 1
+    boxEL.onclick = function() {
+      //修改样式
+      //1,直接修改style
+      boxEL.style.color = 'red'
+      boxEL.style.fontSize = '32px'
+
+      //2,动态添加某个class(常用)
+      // boxEL.className = 'active'//把.box改为了'active'
+
+      //3,动态修改boxEl的宽度(当要对某个精准修改时用)
+      // boxEL.style.width = 100 * count +'px'//100不用加引号
+      
+      count++
+    } 
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // ready方法它只等Dom结构加载完成，但不等待图片等其他资源
+    // load方法它等待整个html页面加载完成，包括图片等其他资源
+
+    // $(window).load(function(){}) // 这种写法已经被废弃了，换成下面的写法
+    $(window).on('load', function() {
+      console.log("页面加载完成");
+    })
+  </script>
+  <img src="./map-file.png" alt="">
+</body>
+</html>

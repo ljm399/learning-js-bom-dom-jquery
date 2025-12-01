@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = [1,2,3,4,5,6]
+    names.length = 10//[1, 2, 3, 4, 5, 6, empty × 4]
+    names.length = 3//[1, 2, 3]
+    names.length = 0//[],清空数组
+
+    //遍历
+    var arr = ['a','b','c','d']
+    //way一
+    for(var i = 0;i<arr.length; i++){}
+    
+    //way二
+    for(var i in arr){
+      console.log(`index:${i},内容:${arr[i]}`)
+    }
+
+    //way三
+    for(var i of arr){
+      console.log(`index:${arr.indexOf(i)},内容:${i}`)
+    }
+  </script>
+</body>
+</html>

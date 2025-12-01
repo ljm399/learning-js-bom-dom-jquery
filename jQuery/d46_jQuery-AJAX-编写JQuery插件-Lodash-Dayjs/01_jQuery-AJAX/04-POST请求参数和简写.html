@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1. 在url中提交查询字符串(少见)
+      // $.ajax({
+      //   url: 'https://httpbin.org/post?name=张三&age=18',
+      //   method: 'POST',
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // 2. data中提交查询字符串
+      // $.ajax({
+      //   url: 'https://httpbin.org/post',
+      //   data: {//这里data不会拼接到url里,放到了请求体中，而且是JSON格式的字符串:name=%E5%BC%A0%E4%B8%89&age=18,因为服务器可能不支持js的对象但字符串可以
+      //     name: '张三',
+      //     age: 18
+      //   },
+      //   method: 'POST',
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // 3. 在data中JSON字符串
+      // $.ajax({
+      //   url: 'https://httpbin.org/post',
+      //   data: JSON.stringify({//不会拼接到url,且不会被编译;{"name":"张三","age":18}:
+      //     name: '张三',
+      //     age: 18
+      //   }),
+      //   contentType: 'application/json;charset=utf-8',//告诉服务器，我发送的是JSON格式的字符串,告诉服务器不要对数据进行编译，直接接收就好
+      //   method: 'POST',
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // // 4.在data中FormData对象
+      // var formData = new FormData();
+      // formData.append('cityId', 404100);//<form><input type="file" name="cityId" value="张三"></form>
+      // formData.append('keyWord', 40323);//<form><input type="file" name="cityId" value="张三"></form>
+      // $.ajax({
+      //   url: 'https://httpbin.org/post',
+      //   data: formData,
+      //   //contentType默认是application/x-www-form-urlencoded; charset=UTF-8,如果要发送JSON格式的字符串，需要手动设置
+      //  contentType:false,//FormData 对象的 Content-Type 需要是 multipart/form-data，否则会报错。所以要设置为false，告诉服务器不要对数据进行编译，直接接收就好
+      //  processData:false,//阻止 jQuery 将 FormData 转换为查询字符串（application/x-www-form-urlencoded）
+      //   method: 'POST',
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // 5. 添加请求头
+      // var formData = new FormData();
+      // formData.append('cityId', 404100);
+      // formData.append('keyWord', 40323);
+      // $.ajax({
+      //   url: 'https://httpbin.org/post',
+      //   data: formData,
+      //   headers:{
+      //     codecao: 'zhidingyi'
+      //   },
+      //  contentType:false,//FormData 对象的 Content-Type 需要是 multipart/form-data，否则会报错。所以要设置为false，告诉服务器不要对数据进行编译，直接接收就好
+      //  processData:false,//阻止 jQuery 将 FormData 转换为查询字符串（application/x-www-form-urlencoded）
+      //   method: 'POST',
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // 6. 简写
+      $.post('https://httpbin.org/post', {name: '张三', age: 18})
+      .then(function(data) {
+        console.log(data)
+
+    })
+
+      })
+  </script>
+</body>
+</html>
+</html>

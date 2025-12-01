@@ -1,0 +1,68 @@
+.cover {
+  height: 550px;
+  width:100%;
+  position: relative;
+  overflow: hidden;
+}
+.lunbo {
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity .4s ease-in;
+}
+.active {
+  opacity: 1;
+}
+.pre {
+  height: 50px;
+  width: 50px;
+  box-sizing: border-box;
+  border: 50px solid green;
+  padding: 0;
+  border-color:transparent ;
+  background-color: rgba(255, 255, 255, 0);
+  border-left: #ccc solid 30px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 20px;
+  
+}
+.next {
+  height: 50px;
+  width: 50px;
+  box-sizing: border-box;
+  border: 50px solid green;
+  padding: 0;
+  border-color:transparent ;
+  background-color: rgba(255, 255, 255, 0);
+  border-right: #ccc solid 30px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  right: 20px;
+}
+.indicator {
+  width: 200px;
+  /* height: 50px; */
+  /* background-color: red; */
+  position: absolute;
+  bottom: 20px;
+  left: 43%;
+  z-index: 10;
+  display: flex;
+  justify-content:space-between;
+}
+.indicator li {
+  width: 15px;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.light {
+  background-color: yellow !important;
+}

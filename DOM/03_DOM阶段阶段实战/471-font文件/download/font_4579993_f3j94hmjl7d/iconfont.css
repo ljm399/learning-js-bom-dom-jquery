@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4579993 */
+  src: url('iconfont.woff2?t=1718012933291') format('woff2'),
+       url('iconfont.woff?t=1718012933291') format('woff'),
+       url('iconfont.ttf?t=1718012933291') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yingxionglianmeng:before {
+  content: "\e77c";
+}
+
+.icon-ski-jumping:before {
+  content: "\e68c";
+}
+
+.icon-wzry:before {
+  content: "\e600";
+  font-size: 25px;
+}
+
+.icon-QX-tiantiankupao:before {
+  content: "\e79d";
+}
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/abc">
+    <input type="text">
+    <input type="submit" name="" id="">
+    <input type="reset" name="" id="">
+  </form>
+
+  <script>
+    var formEl = document.querySelector('form')
+    var textEl = formEl.children[0]//有0开始
+    var submitEl = formEl.children[1]
+    var resetEl = formEl.children[2]
+
+    //1,获取焦点与失去焦点
+    // textEl.onfocus = function() {
+    //   console.log('focus')
+    // }
+    // textEl.onblur = function() {
+    //   console.log('blur')
+    // }
+
+    //2,内容改变(input)/输入内容(change)
+    textEl.oninput = function() {
+      console.log('input')//输入是一直打印
+    }
+    textEl.onchange = function() {
+      console.log('change')//等到失去焦点就打印
+    }
+
+    //3,监听重置和提交
+    formEl.onreset = function(event) {//事件绑定在form上面而不是按钮(如reset)上
+      event.preventDefault()
+      console.log('reset')
+    }
+
+    formEl.onsubmit = function(event) {//与上面一样
+      event.preventDefault()
+      console.log('sumbit')
+
+    }
+    
+  </script>
+</body>
+</html>

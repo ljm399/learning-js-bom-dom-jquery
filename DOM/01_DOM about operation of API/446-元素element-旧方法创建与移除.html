@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    i am div
+    <p>i am p</p>
+    <span>i am span </span>
+  </div>
+  <nav>i am nav</nav>
+
+  <script>
+    var bodyEl = document.body
+    var divEl = document.querySelector('div')
+    var navEl = document.querySelector('nav')
+    var pEL = document.querySelector('p')
+    //创建元素
+    var h1El = document.createElement('h1')
+    h1El.textContent = 'i am h1'
+
+    //旧方法(sibling兄弟姐妹)
+    // bodyEl.appendChild(h1El)//body最后一个
+    // divEl.insertBefore(h1El,pEL)//必须在div中,p前面创建
+    divEl.replaceChild(h1El,pEL)//必须在div中,p被替代
+    divEl.removeChild(h1El)//在div中的h1被删除
+  </script>
+</body>
+</html>

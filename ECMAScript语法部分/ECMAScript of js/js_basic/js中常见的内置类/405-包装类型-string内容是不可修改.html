@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str = 'Hello w'
+    str[0]='aa'
+    console.log(str)//不变
+
+    //string的两个方法
+    console.log(str.toUpperCase)//没加(),只打印了toUpperCase
+    console.log(str.toUpperCase())//这里不是str,省略了var str2 = str.toUpperCase别加(),否则就调用了
+    console.log(str.toLocaleLowerCase())
+  </script>
+</body>
+</html>

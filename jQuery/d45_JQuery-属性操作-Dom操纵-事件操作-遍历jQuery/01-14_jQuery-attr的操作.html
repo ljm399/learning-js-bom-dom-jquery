@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 放js前后效果一样,因为$(function(){...}) -->
+  <ul id="list" name="codecao">
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1. 获取attribute属性值
+      console.log($("ul").attr("id"))//list
+      console.log($('ul').attr('name'))//codecao
+
+      // 2. 设置attribute属性
+      $('ul').attr('id', 'list-new')//要看见效果,把ul标签放后面
+
+      //设置多个属性(对象)
+      $('ul').attr({
+        id: "codecao",
+        num: '007'
+      })
+
+      // 3. 移除attribute属性
+      // $('ul').removeAttr('id')
+      
+      //移除多个属性
+      $('ul').removeAttr('id num')
+      //不加参数没效果
+      // $('ul').removeAttr()
+
+    })
+  </script>
+ 
+</body>
+</html>
+</html>

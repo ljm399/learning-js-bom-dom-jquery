@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function stu(name,age){
+      this.name = name//可以不加逗号,就数值or对象要加
+      this.age = age
+      this.fn = function(){
+        console.log('我在')
+      }
+      return this//widow且一定加,因为对象是window
+    }
+    // // var dil = stu('cao','18')
+    // // dil.fn()    
+    // // console.log(dil)
+    //上面是错的
+    function stu(name,age){
+      this.name = name//可以不加逗号,就数值or对象要加
+      this.age = age
+      this.fn = function(){
+        console.log('我在')
+      }
+      // return //不用加,因为对象就是stu
+    }
+    var gz = new stu('构造','19')
+    var hz = new stu('gaozhao','22')
+    console.log(`i am gz${gz.name}`)//构造
+    console.log(gz)
+    console.log(hz)//与上面那个一样的是与stu开头的对象
+    console.log(stu.name)//stu不是对象,hz才是引用的对象
+  </script>
+</body>
+</html>

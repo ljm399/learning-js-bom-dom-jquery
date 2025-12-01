@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="997" name="codecao">
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <input type="text">
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1. 获取property的属性
+      console.log("%O", document.querySelector('ul'))
+
+      console.log($("ul").prop("id"))//可以获取
+      console.log($("ul").prop("name"))//获取不到，因为不是属性，是标签里面的内容
+      console.log($('ul').prop('children'))//对象里面的
+
+      // 2. 设置property的属性(多个),也可以单个
+      //单个
+      $('ul').prop('name', 'codecao')//name设置在prop里面,而不是attr,这时可以获取到name
+
+      //多个
+      $('input').prop({
+        disabled: true,
+        placeholder: '请输入内容'
+      })//disabled和placeholder在对象里面，所以可以设置
+
+      //3. 删除property的属性
+      $("ul").removeProp('name')//只能删除那些自定义的属性如name,而不能删除id,class等内置属性如disabled/placeholder
+    })
+  </script>
+</body>
+</html>
+</html>

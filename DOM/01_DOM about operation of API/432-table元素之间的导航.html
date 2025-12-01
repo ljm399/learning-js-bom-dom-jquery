@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <table>
+      <thead>
+        <caption>caption</caption>
+        <tr>
+          <td>'我是thead1'</td>
+          <td>'我是thead2'</td>
+          <td>'我是thead3'</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>3</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      var tableEl = document.body.firstElementChild //加as Html作用后续会讲
+
+      console.log(tableEl.tHead,tableEl.tBodies,tableEl.tFoot)//不可以加(),不是函数
+      console.log(tableEl.rows)
+
+      console.log(tableEl.rows[2])//tfoot>tr元素
+      console.log(tableEl.rows[0])//tHead>tr元素
+      console.log(tableEl.caption)//caption元素
+      console.log(tableEl.tBodies)//tbody里面所有元素的集合
+      console.log(tableEl.rows[1].cells[0])//一个td元素,cells一定要加[]否则就是个td集合
+    </script>
+</body>
+</html>

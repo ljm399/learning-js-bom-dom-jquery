@@ -1,0 +1,95 @@
+.crumb span{
+  margin-right: 5px;
+  color: #000;
+}
+.crumb span:nth-child(2){
+  margin-left: 5px;
+  color: #333;
+}
+.operation{
+  background-color: #fff;
+  /* margin: 10px; */
+}
+.category,.discount,.sort{
+  display: flex;
+  
+}
+.operation .itme {
+  padding: 10px;
+  width: 100px;
+  color: #000;
+  font-weight: 800;
+  cursor: pointer;
+}
+.operation .itme:first-child {
+  color: #333;
+  font-weight:normal;
+  cursor:auto;
+}
+.operation ul {
+  margin: 10px 0 10px 10px;
+}
+
+.active {
+  text-decoration: underline;
+  color: rgba(0,0,255,1) !important;
+}
+
+
+
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 805px;
+}
+.products > .item {
+  width: 291px;
+  height: 400px;    
+  background-color: #fff;
+}
+
+.products > .item a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.products > .item .album {
+  width: 180px;
+  height: 180px;
+  margin: 30px 0;
+}
+.products > .item .name {
+  color:#000;
+  font-weight: 800;
+}
+.products > .item .discount {
+  color: #ccc;
+  margin: 10px 0;
+}
+.products > .item .price {
+  color: red;
+  font-weight: 800;
+  margin: 5px 0 ;
+}
+.products > .item .tip span {
+  display: inline-block;
+  border: 1px red solid;
+  color: red;
+  margin-left: 5px;
+}
+.products > .item .comment {
+  color: #ccc;
+  font-size: 12px;
+  margin: 10px;
+}
+.products > .item  .comment span {
+  display: inline-block;
+  margin-left: 10px ;
+}
+
+.space {
+  width: 291px;
+  opacity: 0;
+  /* height: 386px; */
+}

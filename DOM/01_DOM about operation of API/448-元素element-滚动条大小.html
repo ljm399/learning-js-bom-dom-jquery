@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    body{
+      padding: 100px;
+    }
+    .box{
+      width: 100px;
+      height: 400px;
+      position: relative;
+      background-color: #ccc;
+    }
+    div{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 100px;
+      background-color: green;
+      /* overflow: auto; */
+      /* overflow: hidden; */
+      overflow:scroll;
+      border: 3px solid;
+      
+    }
+  </style>
+<body>
+  <div class="box">
+    <div>
+      当年我们学校 准考证全在班主任手里统一管理 还有一位任课老师协同管理 锁在老师办公室里 保证不丢 只有在进入考场前才统一发给每个考生 而去考场 都是学校十几台校车统一接送 由交警开道 直接送到考场楼下 所以这种什么考试迟到 准考证丢了之类的事情 在我们学校都不可能发生
+    </div>
+  </div>
+
+  <script>
+    var bxoEl = document.querySelector('.box div') //as HTMLDivElement
+
+    //1,获取样式(局限性很强)
+    var boxStyle = getComputedStyle(bxoEl)
+    console.log('boxstyle.width/hight',boxStyle.width, boxStyle.height)//获取的只是content的width与height,没有滚动条那些(45,60)
+
+    // 2,获取更多(思导哪里有)
+    console.log('boxEl.clientwidth/hight',bxoEl.clientWidth)//与boxstyle.width一样,即与上面一样
+    console.log(bxoEl.clientHeight)
+
+    console.log('boxEl.clientLeft',bxoEl.clientLeft)
+    console.log(bxoEl.clientTop)//3,因为border为3
+
+    console.log('boxEl.offsetHeight',bxoEl.offsetHeight)//106,即自己设的高度,目前元素的高宽
+    console.log(bxoEl.offsetWidth)//66,加上了border
+
+    console.log('boxEl.offsetLeft',bxoEl.offsetLeft)//0,position为0,即是距离父元素的left为0,没有offsetRight和offsetBottom
+    console.log(bxoEl.offsetTop)//79,position为79,即距离父元素的top为79
+
+    window.onclick = function(){
+      console.log("________________________________")
+      console.log('boxEL.scrollTop',bxoEl.scrollTop)//滚了多少的高度
+      console.log('boxel.srollY',bxoEl.scrollY)//undefine,属性不存在：并非所有的DOM元素都有 scrollY 属性，只有window才有
+      console.log('boxEl.scrollHeight',bxoEl.scrollHeight)//可以滚动的高度加上元素的内容高度(content和padding)
+      console.log('scrolltop',window.scrollTop)//undefined,因为window没有scrollTop
+      console.log('window.scrollY',window.scrollY)//76
+    }
+  </script>
+</body>
+</html>

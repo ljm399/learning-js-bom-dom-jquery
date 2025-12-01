@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>按钮</button>
+
+  <script>
+    var btnEl = document.querySelector('button')
+
+    //1,监听函数移除的过程
+    var foo = function() {
+      console.log('i am foo')
+    }
+    btnEl.addEventListener('click',foo)
+
+    //过4秒就移除foo
+    setTimeout(function() {
+      btnEl.removeEventListener('click',foo)//想要移除的函数必须是表达式函数,function(){}这样如声明式函数or立刻执行函数不能被移除
+    },2000)
+
+
+    //二,方法三dispatch
+    //eventTarget就可以实现类似事件总线的效果(即自己在内定对象中如window创个事件(如click))
+
+    // window.dispatchEvent(new Event('cao'))//dispatch在监听方法前面不生效
+
+
+    window.addEventListener('cao',function() {
+      console.log('i am cao')
+    })//没有dispatchEvent派发的事件就不会打印'I am cao'
+
+    setTimeout(function() {
+      window.dispatchEvent(new Event('cao'))
+    },3000)
+    // window.dispatchEvent(new Event('cao'))//i am cao,过程:先监听,然后派发是就会打印I am cao
+  </script>
+</body>
+</html>

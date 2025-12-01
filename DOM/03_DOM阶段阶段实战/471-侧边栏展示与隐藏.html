@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .top-bar{
+      pointer-events: none;
+    } */
+    .item{
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    span{
+      position: absolute;
+      /* position: absolute;层叠使其可以设宽度 */
+      top: 0;
+      left: 34px;
+      /* display: inline-block; */
+      height: 32px;
+      /* width: 100px; */
+      width: 0;
+      line-height: 35px;
+
+      color: #fff;
+      text-align: center;
+      background-color: red;
+      cursor: pointer;
+
+      transition: width .1s ease;
+      pointer-events: none;
+
+    }
+    i{
+      display: inline-block;
+      height: 32px;
+      pointer-events: none;
+    }
+  </style>
+  <link rel="stylesheet" href="./471-font文件/download/font_4579993_f3j94hmjl7d/iconfont.css">
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="item">
+      <i class="iconfont icon-ski-jumping"></i>
+      <span>滑雪大冒险</span>
+    </div>
+    <div class="item">
+      <i class="iconfont icon-yingxionglianmeng"></i>
+      <span>英雄联盟</span>
+    </div>
+    <div class="item">
+      <i class="iconfont icon-wzry"></i>
+      <span>王者荣耀</span>
+    </div>
+    <div class="item">
+      <i class="iconfont icon-QX-tiantiankupao"></i>
+      <span>天天酷跑</span>
+    </div>
+  </div>
+
+  <script>
+    //方法一:无冒泡,不是用事件委托,缺点:性能低
+    // var itemsEl = document.querySelectorAll('.item')
+    // for(var item of itemsEl) {
+    //   item.onmouseenter = function() {
+    //     this.children[1].style.width = '100px'
+    //   }
+    //   item.onmouseleave = function() {
+    //     this.children[1].style.width = 0
+    //   }
+    // }
+
+    //方法二:事件委托,冒泡,必须有一个如ul一样包含整个div的元素
+    // var itemEl = document.querySelector('.item')//不是.item
+    // var topEl = document.querySelector('.top-bar')
+    // topEl.onmouseover = function(event) {
+    //     width('100px') 
+    //     console.log(width)
+    // }
+
+    // topEl.onmouseout = function(event) {
+    //     width(0)
+    // }
+
+    // function width(width) {
+    //   if(event.target !== topEl){
+    //       var itemEl = event.target.classList.contains('item') ? event.target:event.target.parentElement
+    //       itemEl.children[1].style.width = width
+    //     } 
+    // }
+    
+    //方法三:禁止事件point-event:none加委托,比上面还多加禁止属性(少用)
+    var topEl = document.querySelector('.top-bar')
+    topEl.onmouseover = function(event) {
+      console.log('onmouseover的event.target:',event.target)
+      // event.target是鼠标在那个元素就是那个元素,而event.currentTarget是冒泡后的元素
+      if(event.target !== topEl){
+        var bar = event.target
+        var itemEl = bar.children[1]
+        itemEl.style.width = '100px'
+      }
+    }
+    topEl.onmouseout = function(event) {
+      // var bar = event.target.classList.contains('top-bar') ? event.target.children[1] : event.target 
+      if(event.target !== topEl){
+        var bar = event.target
+        var itemEl = bar.children[1]
+        itemEl.style.width = 0
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span{
+      display: inline-block;
+      margin: 1px;
+      width: 20px;
+      background-color: red;
+    }
+  </style>
+</head>
+  <script src="./js/前面加个0.js"></script>
+<body>
+  <span class="hour">时</span>:
+  <span class="min">分</span>:
+  <span class="second">秒</span>
+
+  <script>
+    var hourEL = document.querySelector('.hour')
+    var minEl = document.querySelector('.min')
+    var secondEl = document.querySelector('.second')
+
+    var endDate = new Date()
+    endDate.setHours(24)
+    endDate.setMinutes(0)
+    endDate.setSeconds(0)
+    endDate.setMilliseconds(0)//毫秒也要设
+    countBack()
+    setInterval(function(){
+     countBack()
+    },1000)
+    function countBack () {
+      var nowDate = new Date()
+      var intervalTime = Math.floor((endDate.getTime() - nowDate.getTime()) / 1000)//floor:小于等于 x 的最大整数
+      
+      // 类比思维
+      // 125 获得其个十百位的数字
+      // Num = 125
+      // bai =  Num/100, shi = floor(Nume/10)%10, ge = floor(Num % 10)//这里的%可理解为求余,把与10的倍数在num中去除
+  
+      var hour =Math.floor(intervalTime / 3600)
+      var min =Math.floor(intervalTime /60) % 60
+      var second =Math.floor(intervalTime % 60)
+  
+      hourEL.textContent =pegStart(hour)
+      minEl.textContent =pegStart(min) 
+      secondEl.textContent =pegStart(second)
+    }
+  </script>
+</body>
+</html>

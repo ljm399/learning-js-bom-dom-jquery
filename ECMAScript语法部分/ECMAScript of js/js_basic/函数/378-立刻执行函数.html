@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    (3+2);
+    (function() {
+      console.log('你好')
+    })()//第一个()要加;,第二个要加代表调用
+    var result = (function(name) {
+      console.log('立刻执行',name)
+      return '我是'
+    })('我是name')
+    console.log(result)//立刻执行函数的参数和返回值
+  </script>
+</body>
+</html>

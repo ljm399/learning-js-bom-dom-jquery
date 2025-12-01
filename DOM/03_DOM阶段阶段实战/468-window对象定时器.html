@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>取消settimeout</button>
+  <button>取消setInterval</button>
+
+  <script>
+    //1,settimeout
+    //由于返回的是新的cleartime故新way不让他返回新值,设默认值
+    //默认值还可以找到你想要的值,并可对其修改
+    var clearTime
+    function foo(xing,age) {
+      console.log('settiomot',xing, age)
+      clearTime = setTimeout(foo, 1000,'cao',22)//这里是调用函数,不要用()
+      // return clearTime//返回的是一个新的定时器,而不是clearTime
+    }
+    // console.log(foo())//1,返回的是1
+    // clearTime = setTimeout(foo, 1000,'cao',22)//函数外只掉用一次,函数内无数次
+
+    var setTimeoutEl = document.body.children[0]
+    setTimeoutEl.onclick = function() {
+      clearTimeout(clearTime)
+    }
+    foo()
+
+    //setInterval
+    function bar(name, dream) {
+      console.log('bar was be invoked', name, dream)
+    }
+    var stopInter =  setInterval(bar, 3000,'CMU','carnegie Mellon')
+
+    var setIntervalEl = document.body.children[1]
+    setIntervalEl.onclick = function() {
+      clearInterval(stopInter)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Father{//es6,类不用加(),不同于function Father(){}
+      // this.money = 100//类里面是其他对象(如对象,函数,数组),这个不是
+
+      // class cao extends Father { //类里面不能是其他类,类要继承就在类外面
+
+        //  function name(params) {//用class这种方式里面的函数不用function,以后会讲
+          
+      money1(){
+          console.log('i am money1')
+          this.sum = '亿'
+      }
+    }
+    class cao extends Father{
+      mai(){
+        console.log('i am mai, have 100亿')
+      }
+    }
+    var caomai = new cao('sum')
+    caomai.money1()//i am money1
+    caomai.mai()//i am mai, have 100亿
+    
+
+  </script>
+</body>
+</html>

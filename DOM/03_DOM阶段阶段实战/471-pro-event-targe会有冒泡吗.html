@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* align-content:centenr不行 */
+      pointer-events: none;
+
+    }
+    .content{
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="content"></div>
+  </div>
+  <script>
+    var boxEl = document.querySelector('.box')
+    var contentEl = document.querySelector('.content')
+    boxEl.onmouseover = function(event) {
+      // console.log(event.target)
+      console.log(event.target.children)//因为event.target本身就有数据,其children肯定有,要是想要她没有就禁止事件,但给它禁止了就全不能用了!所有只能通过子元素下手
+    } //有,你满足了,这又不是冒泡,你移动boxEL肯定有其打印
+    
+  </script>
+</body>
+</html>

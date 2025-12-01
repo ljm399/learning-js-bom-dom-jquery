@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border-collapse: collapse;
+    }
+    table tr td{
+      border: 1px solid black;
+      padding: 8px 12px;
+    }
+    /* way一 */
+    /* tr:first-child td:first-child{
+      background-color: red;
+    }
+    tr:nth-child(2) td:nth-child(2){
+      background-color: red;
+    }
+    tr:nth-child(3) td:nth-child(3){
+      background-color: red;
+    }
+    tr:nth-child(4) td:nth-child(4){
+      background-color: red;
+    }
+    tr:nth-child(5) td:nth-child(5){
+      background-color: red;
+    } */
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <script>
+    //way二
+    var tableEL = document.body.firstElementChild
+    for(var i = 0; i < 5; i++){//i不能为1,为0
+      var trEL = tableEL.rows[i] //必须rows[i]不能没有rows[i]
+      var tdEl = trEL.cells[i]
+      tdEl.style.background = 'red'
+    }
+  </script>
+</body>
+</html>

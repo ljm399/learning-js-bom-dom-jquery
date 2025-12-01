@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+    }
+    /* 为什么span不设display:block也可设宽高,因为flex-item不严格区分这些
+     */
+    span{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span></span>
+  </div>
+  <a href="www.baidu.com">i am a</a>
+
+  <script>
+    var boxEl = document.querySelector('.box')
+    var spanEl = boxEl.querySelector('span')
+    var bodyEl = document.body
+    var aEl = document.querySelector('a')
+
+    //取消事件的默认行为
+    aEl.onclick = function(event) {//()括号里面必须有event
+      console.log('a发生了点击')
+      event.preventDefault()
+    }
+
+    //阻止事件进一步传递(明确event.phase那个3个阶段)(以下是6个就是捕获与冒泡的顺序)
+    // 捕获过程//(括号里面必须有event)
+    bodyEl.addEventListener('click', function(event) {
+      console.log('body发生了点击')
+      // event.stopPropagation()//propagation是方法要加括号才能启用,但xx = fn不要加分钟不等xx这个事件完成fn自己就直接执行了
+    },true)
+    boxEl.addEventListener('click', function(event) {
+      console.log('box发生了点击')
+      event.stopPropagation()
+    },true)
+    spanEl.addEventListener('click', function() {
+      console.log('span发生了点击')
+      // event.stopPropagation()//与这六个循序有关
+    },true)
+
+    //先捕获(1-2),在冒泡(3)
+    spanEl.addEventListener('click', function() {
+      console.log('span发生了点击')
+    })
+    boxEl.addEventListener('click', function() {
+      console.log('box发生了点击')
+    })
+    bodyEl.addEventListener('click', function() {
+      console.log('body发生了点击')
+    })
+
+  </script>
+</body>
+</html>

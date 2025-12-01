@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+  <button>搜索</button>
+
+  <script>
+    var inputEl = document.querySelector('input')
+    //先有down然后press再up
+    inputEl.onkeydown = function() {
+      console.log('down')
+    }//按下瞬间是down和down一样,故按下瞬间也会打印press
+    inputEl.onkeypress = function() { 
+      console.log('press',event.key,event.code)
+    }
+    inputEl.onkeyup = function(event) {
+      //key与code每个函数里面都一样(如与上面一样),
+      console.log('up',event.key,event.code)
+    }//只要按下后一抬起来就打印
+
+    //event.key:只要键盘按什么,就打印什么如按shift就打印shift
+    //而event.code与key区别,这不区分大小写,如字母a以keyA,1以Digit2,;以Semicolon,其他如shift键与key一样
+
+    //应用:按下s键后,搜索自动获取焦点
+    window.onkeyup = function(event) {
+      if(event.code === 'keyS') {}
+      inputEl.focus()
+      console.log(event.code)
+    }
+
+
+
+  </script>
+</body>
+
+</html>

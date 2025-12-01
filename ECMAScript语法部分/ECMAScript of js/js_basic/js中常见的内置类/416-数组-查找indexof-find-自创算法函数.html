@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = ['aa','b','c','d']
+    console.log(names.indexOf(-1))//-1
+    // console.log(names.indexOf(d))//d is undefined
+    console.log(names.indexOf('d'))//3
+    //弊端:要打内容才能找到,要是如stu一样就很麻烦
+    console.log(names.indexOf('a'))//没有就返回-1
+
+    //自创函数找数字对象中的想要数据
+    var stu = [
+      {id: 100, name: 'cao'},
+      {id:99, name: 'mai'},//属性or方法名可以不加引号,如同设了变量
+      {id:66, name:'junhao'}
+    ]
+    var bar = null;//判断是否拿到{}是ture吗,设默认值这是一种办法
+    for(var i of stu){
+      if(i.id === 30){
+        // bar.save = i //Cannot set properties of null我不能给null设属性和方法
+        //解决办法
+        bar = i
+        console.log(i,typeof bar)
+      }
+    }
+    if(bar){
+      console.log(bar)
+    }else{
+      console.log('里面没有对应的值')
+    }
+    //{}是false or true
+    var sor = {},ros = null
+    console.log(Boolean(sor))//true
+    console.log(Boolean(ros))//false
+    
+    //way三,find方法
+    var stu = [
+      {id: 100, name: 'cao'},
+      {id:99, name: 'mai'},
+      {id:66, name:'junhao'}
+    ]
+    var names =[1,3]
+    console.log(typeof name)//就name会是string,变量名是student不会(番外片)
+    var student = stu.find(function(item){
+      if (item.id=99)return true//item也行
+    })
+    console.log(student)
+  </script>
+</body>
+</html>

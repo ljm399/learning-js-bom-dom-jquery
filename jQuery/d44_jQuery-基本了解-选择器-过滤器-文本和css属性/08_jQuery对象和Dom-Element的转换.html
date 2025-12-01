@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    //jQuery 对象 转为 Dom Element
+    var $ul = $('ul');
+    console.log($ul)
+    //方式一
+    console.log("%o", $ul[0]);
+    //方式二
+    console.log($ul.get(0))//ul元素不是对象,和上面一样
+    console.log($ul.get())//获取所有元素,用数组包裹,如这[ul]
+
+
+    //Dom Element 转为 jQuery对象
+    var ulEl = document.querySelector('ul');
+    console.log(ulEl);
+    console.log($(ulEl))
+
+  </script>
+</body>
+</html>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+<body>
+  <div>
+    <button>按钮</button>
+  </div>
+
+  <script>
+    var divEL = document.querySelector('div')
+    var btnEl = document.querySelector('button')
+
+    divEL.onclick = function(event) {
+      console.log(this)//div,绑定到当前的currentTarget上即divEl
+      console.log(event.currentTarget)//div
+      console.log(event.target)//(3个都是点button)button,3个都是点div则全是div
+    }
+  </script>
+</body>
+</html>

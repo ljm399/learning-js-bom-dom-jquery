@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我是注释 -->
+  <div class="box">
+    nihoa
+    <span class="span">i am span</span>
+      <p>i am p</p>
+      <!-- <div class="content">i am div</div> -->
+  </div>
+  <p>i am p</p>
+
+
+
+  <script>
+    //1,获取3个节点
+    var bodyChildNodes = document.body.childNodes
+    console.log(bodyChildNodes[1])//注释
+    console.log(bodyChildNodes[2])//div
+    console.log(bodyChildNodes[3])//p
+
+    //2.nodeName 节点的名称
+      //tagName 针对元素的名称
+    console.log(bodyChildNodes[0].nodeName)//#text,不知道哪来的
+    console.log(bodyChildNodes[1].nodeName)//#commet
+    console.log(bodyChildNodes[2].nodeName)//text
+    console.log(bodyChildNodes[3].nodeName)//DIV名称,与上面区分
+    console.log(bodyChildNodes[1].tagName) //undefinec
+    console.log(bodyChildNodes[2].tagName) //undefined
+    console.log(bodyChildNodes[3].tagName)//DIV
+
+    console.log('--------------')
+    //3.data(nodeValue)/innerHTMl/textContent
+    //data针对非元素获取数据
+    //innerHTML;对应的html元素也会获取
+    //textContent:只获取文本内容
+    console.log(bodyChildNodes[1].data)// 我是注释
+    console.log(bodyChildNodes[2].data)//undefined
+    console.log(bodyChildNodes[3].data)//space
+    console.log(bodyChildNodes[1].innerHTML)//undefined
+    console.log(bodyChildNodes[2].innerHTML)//undefined
+    console.log(bodyChildNodes[3].innerHTML)//div元素包括里面的注释
+    console.log(bodyChildNodes[1].textContent)//我是注释
+    console.log(bodyChildNodes[2].textContent)//space,textContent是对所有文本进行选择,第二个是div无文本就space
+    console.log(bodyChildNodes[3].textContent)//nihao,注释不获取
+
+    //设置文本,innerHTML与textContent作用一样,后者不会被解析
+    bodyChildNodes[2].innerHTML = '<h2>i am h2</h2>'
+    bodyChildNodes[2].textContent = '<h1>i am h1</h1>'
+
+    console.log('==================')
+      // 2.4.outerHTML:同时获取父元素
+      console.log(bodyChildNodes[2].outerHTML)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div class="box" id="box" data-age="18" name="cao"></div>
+    
+    <script>
+      var boxEl = document.querySelector('div')//当只有一个div时才这样用
+      console.log(boxEl.age)//undefined,因为age不是标准Attribute所有不是property
+      console.log(boxEl.dataset.age)//把div中的age改为data-age(18)
+    </script>
+</body>
+
+</html>

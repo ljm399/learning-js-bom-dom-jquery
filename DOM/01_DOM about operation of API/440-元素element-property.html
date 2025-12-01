@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 元素中属性叫Attribute -->
+  <!-- 标准Attribute在对应的对象模型中有对应的property -->
+  <div id="id" class="box" title="title"
+  age="18" is="mjl">
+  i am div</div>
+  <input type="checkbox" checked>
+  <input type="text" name="" id="bar" >
+  <button class="btn">按钮</button>
+
+  <script>
+    //对象中的属性叫property
+
+    //获取box元素
+    var boxEL = document.querySelector('.box')
+    
+    //input 元素
+    var inputEl = document.querySelector('input')
+    // if(inputEl.getAttribute('check')){
+    //   console.log('checkbox处于选中状态')
+    // }
+    
+    //1,上面不行,优化
+    if(inputEl.checked){//标准Attribute在对应的对象模型中有对应的property,与上面区别
+      console.log('checkbox处于选中状态')
+    }
+
+    //2,Attribute和property是相互影响
+    boxEL.id = 'aaaaa'
+    console.log(boxEL.getAttribute('id'))//aaaaa
+
+    boxEL.setAttribute('title','hahaha')
+    console.log(boxEL.title)//hahaha
+
+    //3,Attribute和property是相互影响,但input的value修改只能通过Attribute的方法,即input.value = 'cao'回报错,但现在优化不会了
+    var inputEL1 = document.querySelector('#bar')
+    var btnEL = document.querySelector('.btn')
+    btnEL.onclick = function(){
+      //way一
+      // inputEL1.setAttribute('value','cao')
+      //way二
+      // inputEL1.value = 'cao'
+    }
+  </script>
+</body>
+</html>

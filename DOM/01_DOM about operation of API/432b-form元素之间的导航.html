@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <input type="text" name="text">
+    <input type="password" name="password">
+    <input type="checkbox" name="checkbox">
+    <select name="select" id="">
+      <option value="apple">apple</option>
+      <option value="banana">banana</option>
+    </select>
+  </form>
+  <script>
+    //获取form
+    var formEl = document.body.firstElementChild//way一
+    console.log(formEl)
+    // console.log( document.forms[0])//way二
+
+    //获取form中的子元素
+    var inputEL = formEl.elements.text//input中text元素,元素包括内容与标签,text与元素中的neme相同
+    var inputElcheck = formEl.elements.checkbox
+    console.log(inputElcheck)//checkbox元素
+    console.log(inputEL)
+
+    //每1秒获取input里面的内容(只执行一次)
+    setTimeout(function(){
+      console.log(inputEL.value)
+    },3000)
+
+  </script>
+</body>
+</html>

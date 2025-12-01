@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var date = new Date()
+    var date2 = new Date('2033-2-2')//Wed Feb 02 2033 00:00:00 GMT+0800
+    console.log(new Date(2033-2-2))//Thu Jan 01 1970 08:00:02 GMT+0800,没加引号就会这样,相当于报错
+
+    //获得现在的时间戳
+    console.log(Date.now())//1717225813250
+    console.log(+new Date())//1717226174552,与上面一样效果(少用)
+
+    //获得自定义时间的时间戳
+    console.log(date2)//Wed Feb 02 2033 00:00:00 GMT+0800
+    console.log(date2.getTime())//1990886400000
+    console.log(date2.valueOf())//1990886400000
+
+    //测性能
+    // var starttime = Date.now()
+    // for (var i = 0; i<100; i++){
+    //   console.log(i)
+    // }
+    // var endtime = Date.now()
+    // console.log(endtime-starttime,'ms')
+
+    console.log('-------------')
+    //Date.parse方法:将一个字符串转为时间戳,不是数组方式一二都是NAN
+    var dateString = '03/03/04x'
+    // 方式一
+    console.log(new Date(dateString).getTime())
+
+    // 方式二parse方法
+    console.log(Date.parse(dateString))
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function request(url,callback){
+      console.log('已经发送')
+      console.log('回收中')
+      var a=['nihoa']
+      callback(a)
+    }
+    // function back(a){
+    //   console.log('结果是',a)
+    // }
+    // request('url',back)
+    request('url',function(a){
+      console.log('结果是',a)
+    })//way2
+  </script>
+</body>
+</html>

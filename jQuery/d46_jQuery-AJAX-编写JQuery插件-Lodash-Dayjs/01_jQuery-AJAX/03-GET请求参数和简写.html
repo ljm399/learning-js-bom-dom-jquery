@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      //1. url:添加查询字符串
+      // $.ajax({
+      //   url: "https://httpbin.org/get?name=张三&age=18&",
+      //   success: function(data) {
+      //     console.log(data)
+      //   }
+      // })
+
+      // 2.支持data中提交参数
+      // $.ajax({
+      //   url: "https://httpbin.org/get",
+      //   data: {
+      //     name: "张三",
+      //     age: 18
+      //   },
+      //   success: function(data) {
+      //     console.log(data)//把data拼接到urlhttps://httpbin.org/get?name=%E5%BC%A0%E4%B8%89&age=18
+      //   }
+      // })
+      //%E5%BC%A0%E4%B8%89即是张三的编码
+      console.log(encodeURIComponent("张三"))//%E5%BC%A0%E4%B8%89
+
+      // 3. 给get请求添加请求头
+      // $.ajax({
+      //   url: "https://httpbin.org/get",
+      //   data: {
+      //     name: "张三",
+      //     age: 18
+      //   },
+      //   headers: {
+      //     accessToken: "123456"//后台拿到这个请求头看其合法不,然后决定是否放行资源,不合法则403
+      //   },
+      //   success: function(data) {
+      //     console.log(data)//把data拼接到urlhttps://httpbin.org/get?name=%E5%BC%A0%E4%B8%89&age=18
+      //   }
+      // })
+
+      // 4. 简写
+      $.get('https://httpbin.org/get', {name: '张三', age: 18})
+      .then(function(res) {
+        console.log(res)
+      })
+      .catch(function(err) {
+        console.log(err)
+      })
+      //这里不是finally而是always
+      .always(function(){
+        console.log('请求完成')
+      })
+      
+
+
+    })
+  </script>
+</body>
+</html>
+</html>

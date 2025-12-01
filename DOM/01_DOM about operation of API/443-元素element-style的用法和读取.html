@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      text-decoration: underline;
+      font-size: 64px;
+      /*  */
+      /* transition: max-height 0.2s ease-out; */
+      
+      /* 实现折叠效果2要素,那一个mei都会显示 */
+      /* max-height: 0; */
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" style="background-color: green;">
+    <p>i am box</p>
+  </div>
+
+  <script>
+    //一.style的用法
+    var boxEL = document.querySelector('.box') //boxEl继承了document的属性和方法
+
+    // console.log(boxEL.style)//在property中使用驼峰格式,因为property,其存储在里面(CSSStyleDeclaration)
+
+    console.log(boxEL.style.fontSize)
+    console.log(boxEL.style.backgroundColor)//space因为div中无设置style="background-color: green;且只能在div中设,css不行
+
+    //2,使用驼峰且没设值就为默认值
+    boxEL.style.maxHeight = '0px'
+
+    //3,设置多个样式(优先级必在css高,只要是xx.style就是)
+    boxEL.style.cssText = 'font-size: 30px;color: orange'//同时这会把原本style中的属性全替换掉(所有不推荐)
+
+    //二,style的读取
+    //在css样式or文件中的属性是读取不到的,调用getComputedStyle函数
+    console.log(boxEL.style.textDecoration)//space,text-..的-用驼峰代替
+    console.log(getComputedStyle(boxEL).textDecoration)//underline solid rgb(255, 165, 0)
+    
+  </script>
+</body>
+</html>

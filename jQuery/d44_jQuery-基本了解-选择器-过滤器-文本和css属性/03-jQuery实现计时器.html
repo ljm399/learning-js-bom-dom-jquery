@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="sub">-</button>
+  <span class="counter">0</span>
+  <button class="add">+</button>
+
+
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    //尽量不要用箭头函数，因为箭头函数没有this指向
+    let counter = 0;
+    jQuery('.sub').on("click", function(){
+      $('.counter').text(--counter)
+    })
+    $(".add").on("click", function(){
+      $('.counter').text(++counter)
+      console.log(counter)
+    })
+    
+  </script>
+</body>
+</html>

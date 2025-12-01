@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //way一,最没用的
+    // for(var i =0; i<3; i++){
+    //   obj = {
+        
+    //   }
+    // }
+
+    //most important,函数可重复调用
+    function student(name,age){
+      var obj = {}
+      obj.name = name//属性名与属性相同,不会有错,同时有利于维护与识别
+      obj.age = age
+      obj.fn = function(){
+        console.log('i am fn')
+      }
+      return obj
+    }
+    // console.log(student('cao','mai'))// undifined
+    // console.log(student)//把函数这个打给我,没有我想要的obj
+    //way一
+     var pri = student('cao','mai1')
+    //  var pr2 = student('cao1','mai1')
+    //  console.log(pri.name,pri.age)
+    //  console.log(pr2.name,pr2.age)
+    //way二
+    for(var stu in pri){
+      var stu2 = pri[stu] 
+      console.log(`值是${stu},键是${stu2}`)//与上面区别,都可以但重点是
+     //var pri = student('cao','mai1')
+     //var pr2 = student('cao','mai1')即可以连续存对象    
+    }
+  </script>
+</body>
+</html>

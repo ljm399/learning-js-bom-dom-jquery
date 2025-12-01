@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 插入的参数
+      //1 插入参数是文本
+      // $('ul').append('文本')
+
+      //2. 参数是html字符串
+      // $('ul').append(`
+      //   <li>item6</li>
+      //   <li>item7</li>
+      // `,'<li>item8</li><li>item9</li>')//换行要有``包裹
+            
+      //3. 参数是jQuery对象
+      // var $li = $('<li>').addClass('li-6').text('item6');
+      // $('ul').append($li);
+
+      //4 参数是元素对象
+      var liEl = document.createElement('li');
+      liEl.className = 'li-7';
+      // liEl.textContent = 'item7';
+      //或
+      liEl.innerText = 'item7';
+      $('ul').append(liEl);
+
+
+      //5. 选中页面上已有的元素
+      $('ul').append($('.li-1'))//是move,不是clone
+    })
+  </script>
+</body>
+</html>
+</html>

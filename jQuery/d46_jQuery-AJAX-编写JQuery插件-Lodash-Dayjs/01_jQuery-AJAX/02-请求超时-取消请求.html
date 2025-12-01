@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    //  会自动执行：当 HTML 文档的 DOM 树构建完成时
+    //  不是立即执行：不是在脚本加载时就立即执行
+
+    $(function() {
+      var jqXHR = $.ajax({
+        url: "http://httpbin.org/get",
+        timeout: 5000,
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(error) {
+          console.log(error)
+        }
+      })
+
+      //取消超时
+      $('ul').click(function() {
+        jqXHR.abort()
+        console.log("取消超时")//请求状态有pending, 取消后变为canceled,没取消则是200或404等状态码
+      })
+    })
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="
+      }
+)
+    })
+  </script>
+</body>
+</html>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2" id="i2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 基本选择器
+    console.log($('.li-1'))
+    console.log($('#i2'))
+
+    // 2. 伪元素选择器
+    console.log($("ul li:nth-child(2)"))
+
+    // 3. jQuery额为扩展的选择器
+    console.log($("ul li:eq(2)"))//拿到item3
+    console.log($("ul li:first"))
+    console.log($("ul li:last"))
+    //even偶数
+    console.log($("ul li:even"))// li-1 li-3(按索引)
+    //odd奇数
+    console.log($("ul li:odd"))//li-2 li-4
+
+  </script>
+</body>
+</html>
+</html>

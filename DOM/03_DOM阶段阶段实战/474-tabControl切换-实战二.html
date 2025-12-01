@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    ul{
+      display: flex;
+      width: 306px;
+      list-style: none;
+      flex-grow: 1;
+      background-color: #ccc;
+
+    }
+    li{
+      width: 100px;
+      text-align: center;
+    }
+    .active{
+      background-color: yellow;
+    }
+    .line{
+      position: relative;
+      top: 5px;
+      background-color: red;
+      width: 3px;
+      height: 13px;
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="active item">dj</li>
+    <div class="line"></div>
+    <li class="item">gogo</li>
+    <div class="line"></div>
+    <li class="item">明信片</li>
+  </ul>
+
+  <script>
+    var ulEL = document.querySelector('ul')
+    //用默认值(设值)来自动找到带active的元素,而不用for来把每个带active都remove掉
+    var activeEL = document.querySelector('.active')
+    ulEL.onmouseover = function(event) {
+      if(!event.target.classList.contains('item'))return//472用break是因为在if里面且想拿到i,所有断的是if,这是断函数用return
+      activeEL.classList.remove('active')//没点,且一定在add前面
+      event.target.classList.add('active')
+      activeEL = event.target
+    }
+
+  </script>
+</body>
+</html>

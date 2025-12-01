@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num=Math.floor(Math.random()*100)
+        var conf=false
+        for(var i=0;i<3;i++){
+            var guess=Number(prompt('猜一个'))
+            if(num==guess){
+                alert('对了')
+                conf=true
+                 break }
+            else if(num!=guess)
+            {
+                alert('错了')
+                continue
+                }
+                // else if(i=2){
+                // alert('机会没了')
+                // break
+        }     
+        // way1 
+        if(i=2){
+                alert('机会没了')
+                }
+                // way2
+        // switch(conf){
+        //     case false:
+        //     alert('机会没了')
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    <p id="title"> i am p</p>
+    <img src="" alt="">
+    <p class="p">你好
+      <span class="span">我是span</span>
+      <span class="span">i am no.2</span>
+      nihoa
+    </p>
+  </div>
+  <script>
+    //一,通过导航拿到想要元素
+    //1,拿到body
+    var bodyEl = document.body
+
+    //2,box
+    var boxEl = bodyEl.firstElementChild
+
+    // 3,拿到class为p
+    var pEL = boxEl.children[2]//全有0开始,没有由1开始
+
+    // 4,拿到span
+    var spanEL = pEL.firstElementChild
+    spanEL.style.color = 'red'
+    console.log(spanEL)
+
+    //二,getElementBy
+    //1,通过className
+    var spanEL2 = document.getElementsByClassName('span')
+    //修改第二个
+    spanEL2[1].style.color = 'green'
+    //修改所有
+    for(var i = 0; i < spanEL2.length; i++){//大部分你要用length,都有这属性
+      spanEL2[i].style.color = 'orange'
+    }
+
+    //2,通过id
+    var titleEl = document.getElementById('title')
+    titleEl.style.color = 'purple'
+
+    //三,querySelector,上面方法已过时
+    var spanEL3 = document.querySelector('.span')//spanEL3 is not iterable(不可迭代),因为不是querySelectorall,只有一个对象,遍历不了
+    spanEL3s = document.querySelectorAll('.span')
+    //spanEl3是对象,可迭代(String/array/节点的列表),所有可以用of
+    for(var el of spanEL3s){
+      el.style.color = 'red'
+    }
+
+    console.log(spanEL3)//第一个span元素
+
+    //拿id
+    var titleEl = document.querySelector('#title')
+    title.style.color = 'red'
+
+    var liEl = document.querySelectorAll('body ul li')//li
+    for(var li of liEl){
+      console.log(li)
+    }
+  </script>
+</body>
+</html>

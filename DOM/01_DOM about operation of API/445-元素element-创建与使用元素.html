@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>i am h1</h1>
+  <div class="box">
+    <p>i am p</p>
+  </div>
+
+  <script>
+    var boxEl = document.querySelector('.box') 
+
+    //方法一(不推荐)
+    // boxEl.innerHTML = `
+      // <span>i am span</span>
+    // `//将div里面其他子元素全删了且解析是浏览器先看其是否字符串再下一步,影响性能
+
+    //方法二:步骤一:真是创建一个DOM对象
+    var spanEl = document.createElement('span')
+    spanEl.className = 'tilte'
+    spanEl.classList.add('add')
+    spanEl.textContent = 'i am span'
+
+    //步骤二:将元素插入boxEl中
+    // boxEl.append(spanEl)//p后面
+    // boxEl.prepend(spanEl)//p前面
+    // boxEl.after(spanEl)//div后面
+    boxEl.before(spanEl)//div前面
+    
+    
+  </script>
+</body>
+</html>

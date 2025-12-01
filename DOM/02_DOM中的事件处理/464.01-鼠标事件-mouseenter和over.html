@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      display: flex;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      align-items: center;
+      justify-content: center;
+    }
+    .content{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="content"></div>
+  </div>
+  
+  <script>
+    var boxEl = document.querySelector('.box')
+    var contentEl = document.querySelector('.content')
+
+    // (on)mouseenter与(on)mouseLeave(不支持冒泡)
+    // boxEl.onmouseenter = function() {
+    //   console.log('box onmouseenter')
+    // }
+    // boxEl.onmouseleave = function() {//没有驼峰,l是小写
+    //   console.log('box onmouseLeave')
+    // }
+
+    // contentEl.onmouseleave = function() {
+    //   console.log('contentEl Leave')
+    // }
+    // contentEl.onmouseenter = function() {
+    //   console.log('contentEl mouse enter')
+    // }
+
+    //2,支持冒泡:mouseover mouseout
+
+    boxEl.onmouseover = function(event) {
+      // console.log(event.target)
+      console.log(event.currentTarget)
+    }
+    // boxEl.onmouseout = function() {
+    //   console.log('boxEl out')//要是子元素完全与父元素宽高一样,那个也不会有冒泡
+    // }//出现冒泡只有满足那两个条件:1,事件绑定在父元素上面,2,点即父元素的子元素才会有冒泡出现(要是是target:指谁就是谁,要是currentTarget则是冒泡那个),target:要是父元素与子元素一样高宽,则不会有父元素打印即使满足那俩个条件,同理要是currentTarget则不会有子元素打印
+
+
+    // contentEl.onmouseover = function() {
+    //   console.log('conterEl over')
+    // }
+    // contentEl.onmouseout = function() {
+    //   console.log('conterEl out')//一样父元素与子元素宽高一样则绑定谁就执行谁
+    // }//没出现冒泡,没冒泡没满足那两个条件
+    
+  </script>
+</body>
+</html>

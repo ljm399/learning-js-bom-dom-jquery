@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./utils/jQuery-3.6.0.js"></script>
+  <script>
+    //  监听文档完全解析
+    //方式一
+    // $("document").ready(function() {
+    //   console.log("doc ready")
+    // })
+
+
+    // 方式二
+    // $().ready(function() {
+    //   console.log("doc ready")
+    // })
+
+    // 方式三
+    // $(function() {
+    //   console.log("doc ready")
+    // })
+
+
+    // 作用:等DOM元素加载完成即其代码可以放在前面或后面，但不包括图片、css等资源
+
+    // 方式三的简化写法
+    jQuery(function() {
+      let counter = 0;
+      jQuery('.sub').on("click", function(){
+        $('.counter').text(--counter)
+      })
+      $(".add").on("click", function(){
+        $('.counter').text(++counter)
+        console.log(counter)
+      })
+    })
+  </script>
+   <button class="sub">-</button>
+   <span class="counter">0</span>
+   <button class="add">+</button>
+</body>
+</html>

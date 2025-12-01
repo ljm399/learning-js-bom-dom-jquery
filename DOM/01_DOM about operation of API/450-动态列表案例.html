@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="list"></ul>
+
+  <script>
+    var listEl = document.querySelector('.list') //as HTMLDivElement
+    var isflag = true
+    while(isflag){
+      var content = prompt('请输入')
+      if(!content){
+        isflag = false
+        //return
+      }
+      var liEl = document.createElement('li')
+      liEl.textContent = content
+      listEl.append(liEl)
+    }
+  </script>
+</body>
+</html>

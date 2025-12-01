@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <button>新建</button>
+    <button>删除</button>
+    <button>保存</button>
+  </div>
+
+  <script>
+    var btnEl = document.querySelectorAll('button')
+    for ( var i = 0; i < btnEl.length; i++) {
+      btnEl[i].onmouseover = function(event) {
+        console.log(event.target.textContent)
+      }
+    }
+
+    //方案二:事件委托
+    var boxEl = document.querySelector('.box')
+    boxEl.onmouseenter = function(event) {//用onmouseover会一次打印两个(里面包括冒泡),而onmouseenter不支持冒泡所以一个
+      console.log(event.target.children)
+      if(event.target.tagName.children === 'BUTTON' ){
+        console.log(event.target.textContent)
+      }
+    }
+  </script>
+</body>
+</html>

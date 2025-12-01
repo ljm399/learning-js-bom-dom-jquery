@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fn1(){
+      console.log('我是fn1')
+      function fn2(){
+        console.log('i am fn2')
+      }
+      return fn2
+    }
+    // debugger
+    fn1()
+    // console.log(fn1)
+    var fn2=fn1
+    console.log(fn2)
+
+    debugger
+    setTimeout(function() {
+      console.log('函数2秒后执行')
+    }, 2000)
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      a = {
+        aa: 1,
+        bb:2
+      }
+      b = [1,2,34,{aa:33},{bbb:3333}]
+      // debugger
+      // for( var foo of b){//of 必须要 iterable,可迭代
+      //   console.log(foo)//1,2,34,过程就是拿到a中的bar即aa就开始一次循还
+      //   var ob = Object.keys(foo)
+      // }
+      // console.log(ob)//以数组存对象中key,但前提a中有对象,ob这个数字只有bbb没有aa,但是个数组,但若aa那个对象有多个键值对,则ob这个数字就存很多数据
+
+
+      for(var bar in a) {//过程就是拿到a中的bar即aa就开始一次循换
+        var barin = Object.keys(bar)
+        console.log(barin)//aa,bb
+      }
+      // 总之,of与in作用相似,对象用of,可迭代用in
+    </script>
+</body>
+</html>

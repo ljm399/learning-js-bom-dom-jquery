@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      a:1,
+      b:function(){
+        console.log(a)
+      }
+    }
+    delete obj.a
+    console.log(obj)
+    delete obj//对象不能被删除,就想你不能删除一个变量,而是把其付给其他值,这里obj可以等于null,就相当于删除了
+    console.log(obj)
+  </script>
+</body>
+</html>

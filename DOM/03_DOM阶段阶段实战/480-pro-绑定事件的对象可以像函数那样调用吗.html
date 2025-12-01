@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+  div{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }    
+  </style>
+<body>
+  <div></div>
+  <script>
+    var divEl = document.querySelector('div')
+    divEl.onmouseenter = function() {
+      console.log('divEl')
+    }
+    divEl.onmouseenter()//可以.，您直接调用了 divEl.onmouseenter()。这实际上并不是触发 mouseenter 事件的正确方式
+  </script>
+</body>
+</html>

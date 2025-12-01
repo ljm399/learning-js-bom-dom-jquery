@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      caomai : '曹迈',
+      fn:function(){
+        alert('wo is fn')
+      },
+      cao : '曹'
+    }
+    // way一
+    var objj=Object.keys(obj)
+
+    for(var i = 0; i < objj.length; i++){
+      console.log(objj[i])
+      // alert(i.)//问题那i就是obj,那谁是方法名or属性名
+    }
+      // way二
+    for(var i in obj) {
+      //为什么var会错
+      console.log(`键是${i},值是${obj[i]}`)
+    } 
+    //way三for(i of obj),388-对象的遍历.html:31  Uncaught TypeError: obj is not iterable不是可迭代的
+    // for(i of obj){}
+
+  </script>
+</body>
+</html>

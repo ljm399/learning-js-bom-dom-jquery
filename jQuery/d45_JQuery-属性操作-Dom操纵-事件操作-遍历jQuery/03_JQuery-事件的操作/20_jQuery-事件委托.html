@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      //事件委托:本质上是利用事件冒泡的原理,在父元素上监听子元素的点击事件
+      $("ul").on("click", "li", function(e) {
+        console.log(e.target)
+      });
+
+      $('ul').click(function (e) {
+        console.log(e.target)
+      })
+
+    })
+  </script>
+</body>
+</html>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- 我是注释 -->
+  wo is title
+  <div class="content">
+    你好
+
+    <span>i am span</span>
+    <span>i is no.2</span>
+  </div>
+  <script>
+    //1,获取3个节点
+    var bodyChildNodes = document.body.childNodes
+    console.log(bodyChildNodes[1])//#text,[]由1开始,不是0,与space无关
+    console.log(bodyChildNodes[2])//注释
+    console.log(bodyChildNodes[3])//div元素
+
+    //2,节点Node属性
+    /* 
+    nodeType   值	        说明	      例子
+    1	         元素节点   (Element)	  <div>、<p> 等
+    3	         文本节点   (Text)	    HTML 之间的空格、换行
+    8	         注释节点   (Comment)	  这是注释 
+    */
+    console.log(bodyChildNodes[1].nodeType)//8
+    console.log(bodyChildNodes[2].nodeType)//3
+    console.log(bodyChildNodes[3].nodeType)//1
+    console.log(document.head.nodeType)//1
+    console.log(document.doctype.nodeType)//10
+    //作用
+    for(var node of bodyChildNodes){
+      if (node.nodeType === 8){
+      }else if(node.nodeType === Node.COMMENT_NODE){
+        
+      }
+    }
+  </script>  
+</body>
+</html>

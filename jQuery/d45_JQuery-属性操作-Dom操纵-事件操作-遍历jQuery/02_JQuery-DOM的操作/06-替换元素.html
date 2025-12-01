@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-1">item1</li>
+    <li class="li-2">item2</li>
+    <li class="li-3">item3</li>
+    <li class="li-4">item4</li>
+    <li class="li-5">item5</li>
+  </ul>
+  <script src="../utils/jQuery-3.6.0.js"></script>
+  <script>
+    // 1. 监听文档完全解析完成
+    $(function() {
+      // 1.replaceAll
+      //将li替换为span标签
+      //先创造
+      // $('<span>').addClass('content').text('我是内容')
+
+      // 再替换
+      // .replaceAll('li')
+      //参数: 1.字符串类型选择器(如'.li')  2.$('ul li') jQuery对象(即$span) 3.元素对象
+
+
+
+      // 2.replaceWith(用法和上面区分)
+      // var $span = $('<span>').addClass('content').text('我是内容')
+      // $('li').replaceWith($span)
+      //参数: 1.字符串类型选择器(如'.li')这里不可以,而是字符串文本/html字符串
+        $('li').replaceWith('span')//replaceAll('li')可以
+
+
+      // $('li').replaceWith('<h3>我是内容</h3>' ) //而是字符串文本/html字符串
+
+
+      // 2.$('ul li') jQuery对象 3.元素对象
+
+    })
+  </script>
+</body>
+</html>
+</html>
