@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>修改history</button>
+    <button class="back">返回上一级</button>
+    <script>
+        //前端路由核心:修改URL,但页面不刷新(是目前vue,react等框架实现路由的底层原理)
+        //way1:修改hash值:
+                        //步骤一:window.hash = 'xx'
+                        //步骤二:window.onchangeHash = fuction() {xxxx}
+        //way2:修改history
+
+        //history属性
+        console.log(history.length);//记录条数
+        console.log(history.state);//当前状态即{name:'what'}
+
+        //修改history
+        var btnEL = document.querySelector('button')
+        btnEL.onclick = function() {
+            // history.pushState({name:'why', age : 19},'','/why')//修改hitory,页面不刷新,第二个参数没有直接'''
+            history.replaceState({name: 'what',age:18},'','/what')//与上面区别这无返回
+        }
+        var back = document.querySelector('.back')
+        back.onclick = function() {
+            history.back()
+            history.forward()
+            history.go(-2)//-则代表back,2为向后2,+向前
+        }
+    </script>
+</body>
+</html>

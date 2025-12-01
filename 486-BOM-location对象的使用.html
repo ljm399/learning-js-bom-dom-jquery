@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <button>打开新网页</button>
+  <button>替换</button>
+  <button>重新加载</button>
+  
+<body>
+  <script>
+    //常见的属性
+    console.log(location.href)//获得完整路径file:///C:/Users/Administrator/Desktop/JavaScript/BOM/486-BOM-location%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%BF%E7%94%A8.html
+    console.log(location.protocol)//file: or http:
+    console.log(location.host)//主机地址
+    console.log(location.hostname)//主机地址不含端口
+    console.log(location.hash)//末尾?后面
+    console.log(location.port)//端口号
+    console.log(location.search)//查询字符串
+    console.log(location.pathname)///C:/Users/Administrator/Desktop/JavaScript/BOM/486-BOM-location%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%BF%E7%94%A8.html
+    //pathname路径,href只window对应的超链接
+
+    //常见方法
+    var btnEL = document.querySelectorAll('button')
+    btnEL[0].onclick = function() {
+      location.assign('http://www.baidu.com')
+    }
+    btnEL[1].onclick = function() {
+      location.replace('http://www.baidu.com')//与上面区别这里没有返回键
+    }
+    btnEL[2].onclick = function() {
+      location.reload('http://www.baidu.com')
+    }
+
+    //URLSearchParams定义一些方法处理URL查询字符串(字符串)
+    var search = '?name=why&age=19&height=1.8'
+    // console.log(search.split('&'));//一个数组
+    var searchParms = new URLSearchParams(search)
+    console.log(typeof searchParms);//object
+    console.log(searchParms);//一个对象,里面是URLSearchParms方法与属性
+    console.log(searchParms.get('name'));//获取
+
+    searchParms.set('word','cao')//设置
+    console.log(searchParms.get('word'));
+
+    searchParms.append('word2','chao')//追加
+    console.log(searchParms.has('word2'));//判断,true
+    console.log(searchParms.has('chao'));//判断,false,只能是搜索参数而不是值
+
+    //要利用则要转换为字符串
+    console.log(searchParms.toString());//name=why&age=19&height=1.8&word=cao&word2=chao
+
+  </script>
+</body>
+</html>

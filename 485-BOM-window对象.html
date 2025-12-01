@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      height: 1000px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+
+  </div>
+  <button class="open">你打的每个字与键盘是前辈花费无数个天想出来的</button>
+  <button class="close">先利用日后理解高维后就是高维打击</button>
+  <button class="scroll">滚动到一定位置,尽量减少外界干扰,外界出题你中心</button>
+  <input type="text">
+  <script>
+    //ECMAscript规范:全局对象->globalThis
+    //对于浏览器- >window
+    // 对于Node ->global
+    //问题:为什么要有globalThis,好像是为了方便使用Node里对象
+    console.log(window)
+    console.log(globalThis)
+    console.log(globalThis === window)//ture
+
+    //浏览器
+    console.log(globalThis.outerHeight)//632
+    console.log(window.outerHeight)//632
+
+    // window.open('../../实训/01-首页面.html','')  //直接跳转了目标页面
+
+    //设置与a元素一样作用的按钮
+    
+    btnEl = document.querySelector('.open')
+    closeEl = document.querySelector('.close')
+    btnEl.onclick = function() {
+      // window.open('../../实训/01-首页面.html')//不设第二个参数默认为blank
+      window.open('./484-window-open-close.html','')
+    }
+    closeEl.onclick = function() {
+      window.close()//必须是window.open打开的对象才能关闭,且打开的对象里设了window.close对应事件
+    }
+
+
+    //scrollTo
+    scrollEl = document.querySelector('.scroll')
+    scrollEl.onclick = function() {
+      scrollTo({top:300})//滚动到布局视角的300px
+    }
+
+    //onfocus与onblur
+    window.onfocus = function() {
+      console.log('窗口获得了焦点')//是你打开切换回再看窗口,不是input获得焦点
+    }
+    window.onblur = function() {
+      console.log('窗口失去了焦点')//当你切换走窗口是,与上面相反
+    }
+
+    window.onload = function() {
+      console.log('页面加载完成')
+    }
+
+    //哈希值(hash)
+    window.onclick = function() {//window就是你看到的
+      location.hash = function() {
+        location.hash = 'aaa'//,也可以在里面把location.hash修改
+        console.log(location.hash)//不能够打印出来,可以直接在检查里面的console里面输入location.hash才有,也可以在里面把location.hash修改
+      }
+    }
+    window.onhashchange = function() {
+      console.log('hash被修改')
+    }
+
+  </script>
+</body>
+</html>

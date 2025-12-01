@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "what",
+            age : 18
+        }
+        //步骤一先序列化
+        var stringf = JSON.stringify(obj)
+        console.log(stringf);
+
+        //步骤二:利用反序列化过程中修改obj里面的值,
+        var newobj = JSON.parse(stringf, function(key, value) {
+            if(key === 'age') {
+                return value + 2
+            }
+            return  value
+        },4)//第三个参数没用如同history第二个参数
+        console.log(obj);//obj始终不变
+        console.log(newobj)//18变20
+    </script>
+</body>
+</html>

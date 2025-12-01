@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>     
+<body>
+    <script>
+        const obj = {
+            name : "what",
+            age : '18',
+            hobbies : ['游戏','竞赛']
+        }
+        //问题
+        localStorage.setItem('info',obj)
+        console.log(localStorage.getItem('info'));//[object Object],而我想存储到localstorage是具体值所以序列化(转为字符串格式)
+
+        //这里的localstorage里还有彭于晏,之前设的也有
+        var string = JSON.stringify(obj)
+        console.log(string);
+        localStorage.setItem('set',string)
+        console.log(localStorage.getItem('set'),typeof string);//{"name":"what","age":"18","hobbies":["游戏","竞赛"]} string
+
+        //利用还要反序列化,转回原来
+        var par = JSON.parse(string)
+        console.log(par,typeof par);//{name: 'what', age: '18', hobbies: Array(2)} 'object'
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "what",
+            friend : {
+                name : 'why'
+            },
+            toJSON : function() {
+                return 123
+            }
+        }
+
+        //1,replace参数
+        var objJSONString = JSON.stringify(obj, function(key, value) {
+            if(key === 'name') {
+                return 'change'
+            }   
+            return value
+        },4)
+        console.log(objJSONString)//{"name":"change","friend":{"name":"change"}}
+
+        //2,参数3:space参数(加空格,提高阅读性)
+        var spac = JSON.stringify(obj,null,4)
+        console.log(spac);//{"name":"what","friend":{"name":"why"}}
+
+        //如果obj本身有toJSON方法,则直接调用toJSON方法
+        var tojson = JSON.stringify(obj)
+        console.log(tojson);//123,上面的输出结果全为123
+    </script>
+</body>
+</html>
