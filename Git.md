@@ -981,6 +981,9 @@ git rebase
 
 - 不要执行 rm -rf *  会把本地文件都给删了，但本地git仓库还在
 - rm -rf .git  --- 删除本地仓库
+- git fetch
+- git merge --allow。。。。
+- git pull --rebase origin main --allow-unrelated-histories
 
 
 
